@@ -1,0 +1,11 @@
+levels:
+  md:
+    tool:
+      markdownlint:
+        flags: ""
+
+  md_with_pylint:
+    inherits_from: "md"
+    tool:
+      pylint:
+        flags: "--good-names=f,i,j,k,x,y,z,ex,_"

@@ -1,0 +1,18 @@
+*.pyc
+*.swo
+*.swp
+*~
+
+statick_output
+
+# from setup.py
+build/
+dist/
+*.egg-info/
+MANIFEST
+
+# From tests
+.coverage
+.pytest_cache
+.tox
+output-*/
