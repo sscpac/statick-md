@@ -1,0 +1,38 @@
+dist: xenial
+sudo: required
+language: python
+python:
+  - '3.5'
+  - '3.6'
+  - '3.7'
+  - '3.8'
+  - 'pypy3'
+
+cache:
+  - apt
+  - pip
+
+notifications:
+  email:
+    on_failure: never
+
+before_install:
+  - sudo apt-get update
+
+install:
+  - cat install.txt | xargs sudo apt-get install -y
+  - pip install -r requirements.txt
+  - cat npm-deps.txt | xargs sudo npm install -g
+
+# This stage is run against everything in the matrix (so every python version)
+script:
+  - pip install tox
+  # Borrowed from flask-mongoengine
+  - tox -e $(echo py$TRAVIS_PYTHON_VERSION | tr -d . | sed -e 's/pypypy/pypy/' | sed -e 's/-dev//')
+
+
+jobs:
+  include:
+    - stage: self_check
+      python: '3.5'
+      script: statick . --profile self_check.yaml
