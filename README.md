@@ -7,7 +7,7 @@
 This is a set of plugins for [Statick](https://github.com/sscpac/statick) that will discover Markdown (md)
 files and perform static analysis on those files.
 
-The current plugins will discover Web files in a project and can be configured to check those files using
+The current plugins will discover Markdown files in a project and can be configured to check those files using
  * [markdownlint](https://github.com/DavidAnson/markdownlint)
 
 Custom exceptions can be applied the same way they are with
