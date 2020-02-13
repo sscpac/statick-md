@@ -1,5 +1,9 @@
 # Statick Markdown Plugins
 
+| Service | Status |
+| ------- | ------ |
+| Build   | [![Travis-CI](https://api.travis-ci.org/sscpac/statick-md.svg?branch=master)](https://travis-ci.org/sscpac/statick-md/branches) |
+
 This is a set of plugins for [Statick](https://github.com/sscpac/statick) that will discover Markdown (md)
 files and perform static analysis on those files.
 
