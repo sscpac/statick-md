@@ -13,4 +13,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## v0.0.1 - 2020-02-13
 ### Added:
+  - Adding support for markdownlint output with column number (@axydes)
   - Initial release (@axydes)
