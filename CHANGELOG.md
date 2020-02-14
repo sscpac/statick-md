@@ -11,7 +11,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ### Removed:
 
-## v0.0.1 - 2020-02-13
+## v0.0.2 - 2020-02-14
 ### Added:
   - Adding support for markdownlint output with column number (@axydes)
+
+## v0.0.1 - 2020-02-13
+### Added:
   - Initial release (@axydes)
