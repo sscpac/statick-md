@@ -15,13 +15,11 @@ EXTRAS = {
     'test': TEST_DEPS,
 }
 
-VERSION = '0.0.1'
-
 setup(
     author='NIWC Pacific',
     name='statick-md',
     description='Statick analysis plugins for Markdown files.',
-    version=VERSION,
+    version='0.0.2',
     packages=['statick_tool',
               'statick_tool.plugins.discovery',
               'statick_tool.plugins.tool'],
