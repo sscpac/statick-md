@@ -15,19 +15,18 @@ EXTRAS = {
     'test': TEST_DEPS,
 }
 
-VERSION = '0.0.1'
-
 setup(
     author='NIWC Pacific',
     name='statick-md',
     description='Statick analysis plugins for Markdown files.',
-    version=VERSION,
+    version='0.0.1',
     packages=['statick_tool',
               'statick_tool.plugins.discovery',
               'statick_tool.plugins.tool'],
     package_dir={'statick_tool': '.',
                  'statick_tool.plugins.discovery': 'src/statick_md/plugins/md_discovery_plugins',
-                 'statick_tool.plugins.tool': 'src/statick_md/plugins/md_tool_plugins'},
+                 'statick_tool.plugins.tool': 'src/statick_md/plugins/md_tool_plugins',
+                 'statick_tool': '.'},
     package_data={'statick_tool': ['rsc/*'],
                   'statick_tool.plugins.discovery': ['*.yapsy-plugin'],
                   'statick_tool.plugins.tool': ['*.yapsy-plugin']},
