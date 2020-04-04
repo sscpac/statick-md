@@ -1,6 +1,7 @@
 # Statick Markdown Plugins
 
 ![Unit Tests](https://github.com/sscpac/statick-md/workflows/Unit%20Tests/badge.svg)
+![Black](https://github.com/sscpac/statick-md/workflows/Black%20Formatting/badge.svg)
 [![Codecov](https://codecov.io/gh/sscpac/statick-md/branch/master/graph/badge.svg)](https://codecov.io/gh/sscpac/statick-md)
 
 This is a set of plugins for [Statick](https://github.com/sscpac/statick) that will discover Markdown (md)
