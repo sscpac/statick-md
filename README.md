@@ -1,7 +1,13 @@
 # Statick Markdown Plugins
 
 ![Unit Tests](https://github.com/sscpac/statick-md/workflows/Unit%20Tests/badge.svg)
+[![PyPI version](https://badge.fury.io/py/statick-md.svg)](https://badge.fury.io/py/statick-md)
 [![Codecov](https://codecov.io/gh/sscpac/statick-md/branch/master/graph/badge.svg)](https://codecov.io/gh/sscpac/statick-md)
+![Python Versions](https://img.shields.io/pypi/pyversions/statick-md.svg)
+![License](https://img.shields.io/pypi/l/statick-md.svg)
+![Daily Downloads](https://img.shields.io/pypi/dd/statick-md.svg)
+![Weekly Downloads](https://img.shields.io/pypi/dw/statick-md.svg)
+![Monthly Downloads](https://img.shields.io/pypi/dm/statick-md.svg)
 
 This is a set of plugins for [Statick](https://github.com/sscpac/statick) that will discover Markdown (md)
 files and perform static analysis on those files.
