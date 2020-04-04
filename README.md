@@ -89,3 +89,11 @@ If you write a new feature for Statick or are fixing a bug, you are strongly enc
 In particular, it is much easier to test whether a bug is fixed (and identify future regressions) if you can add a small unit test which replicates the bug.
 
 Before submitting a change, please run tox to check that you have not introduced any regressions or violated any code style guidelines.
+
+### Formatting
+
+Statick code is formatted using [black](https://github.com/psf/black).
+To fix locally use
+
+    pip install black
+    black src tests
