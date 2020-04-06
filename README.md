@@ -1,6 +1,7 @@
 # Statick Markdown Plugins
 
 ![Unit Tests](https://github.com/sscpac/statick-md/workflows/Unit%20Tests/badge.svg)
+![Black](https://github.com/sscpac/statick-md/workflows/Black%20Formatting/badge.svg)
 [![PyPI version](https://badge.fury.io/py/statick-md.svg)](https://badge.fury.io/py/statick-md)
 [![Codecov](https://codecov.io/gh/sscpac/statick-md/branch/master/graph/badge.svg)](https://codecov.io/gh/sscpac/statick-md)
 ![Python Versions](https://img.shields.io/pypi/pyversions/statick-md.svg)
@@ -98,3 +99,11 @@ future regressions) if you can add a small unit test which replicates the bug.
 
 Before submitting a change, please run tox to check that you have not
 introduced any regressions or violated any code style guidelines.
+
+### Formatting
+
+Statick code is formatted using [black](https://github.com/psf/black).
+To fix locally use
+
+    pip install black
+    black src tests
