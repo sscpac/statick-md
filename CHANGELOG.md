@@ -12,6 +12,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ### Removed
 
+## v0.0.3 - 2020-04-06
+
+### Added
+
+- Installing .markdownlintrc file with this package.
+- Formatted all code using black. Added Github Action to ensure future commits are consistent with black formatting.
+- Using markdownlint statick plugin to check documentation files.
+
+### Changed
+
+- Switched from travis ci to github actions.
+
+### Fixed
+
+- Limit discovery plugins to only markdown files in md config levels. (@tdenewiler)
+
 ## v0.0.2 - 2020-02-14
 
 ### Added
