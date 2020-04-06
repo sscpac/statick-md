@@ -19,7 +19,7 @@ setup(
     author='NIWC Pacific',
     name='statick-md',
     description='Statick analysis plugins for Markdown files.',
-    version='0.0.2',
+    version='0.0.3',
     packages=['statick_tool',
               'statick_tool.plugins.discovery',
               'statick_tool.plugins.tool'],
