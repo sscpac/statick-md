@@ -79,6 +79,11 @@ jobs:
         with:
           fail_ci_if_error: true
 
+      - name: Statick Documentation
+        if: matrix.os == 'ubuntu-18.04'
+        run: |
+          statick . --user-paths statick_config --profile documentation.yaml
+
       - name: Self check
         run: |
           mkdir statick-output
