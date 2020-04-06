@@ -12,6 +12,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ### Removed
 
+## v0.0.4 - 2020-04-06
+
+### Fixed
+
+- Fixed installation of config and profile files from this package.
+
 ## v0.0.3 - 2020-04-06
 
 ### Added
