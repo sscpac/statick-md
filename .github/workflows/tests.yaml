@@ -58,16 +58,17 @@ jobs:
           python -m pip install --upgrade virtualenv
           python -m pip install -r requirements.txt
 
+      # Have to install newer version from non-apt source due to SSL library compatibility issues.
       - name: Install tools (Linux)
         if: matrix.os == 'ubuntu-18.04'
         run: |
-          sudo apt update
-          sudo apt install nodejs-dev
-          sudo apt install npm
+          sudo apt install curl
+          curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
+          sudo bash nodesource_setup.sh
+          sudo apt install nodejs
           sudo npm install -g n
           sudo n stable
           sudo npm install -g markdownlint-cli@0.21.0
-          cat npm-deps.txt | xargs sudo npm install -g
 
       - name: Tox
         run: |
