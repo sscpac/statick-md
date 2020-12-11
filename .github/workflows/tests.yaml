@@ -84,7 +84,7 @@ jobs:
         run: >-
           black --check --diff
           --exclude tests/.*/*valid_package/*
-          statick statick_ws statick_tool tests
+          src tests
 
       - name: Tox
         run: |
