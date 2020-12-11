@@ -87,6 +87,7 @@ jobs:
           statick . --check --user-paths . --profile documentation.yaml
 
       - name: Self check
+        if: matrix.os == 'ubuntu-18.04'
         run: |
           mkdir statick-output
           statick . --output-directory statick-output --check --profile self_check.yaml
