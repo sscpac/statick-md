@@ -4,23 +4,25 @@ from __future__ import print_function
 
 import re
 import subprocess
+from typing import List, Match, Optional, Pattern
 
 from statick_tool.issue import Issue
+from statick_tool.package import Package
 from statick_tool.tool_plugin import ToolPlugin
 
 
-class MarkdownlintToolPlugin(ToolPlugin):
+class MarkdownlintToolPlugin(ToolPlugin):  # type: ignore
     """Apply markdownlint tool and gather results."""
 
-    def get_name(self):
+    def get_name(self) -> str:
         """Get name of tool."""
         return "markdownlint"
 
-    def scan(self, package, level):  # pylint: disable=too-many-locals
+    def scan(self, package: Package, level: str) -> Optional[List[Issue]]:  # pylint: disable=too-many-locals
         """Run tool and gather output."""
-        tool_bin = "markdownlint"
+        tool_bin = "markdownlint"  # type: str
 
-        tool_config = ".markdownlintrc"
+        tool_config = ".markdownlintrc"  # type: str
         user_config = self.plugin_context.config.get_tool_config(
             self.get_name(), level, "config"
         )
@@ -28,21 +30,21 @@ class MarkdownlintToolPlugin(ToolPlugin):
             tool_config = user_config
 
         format_file_name = self.plugin_context.resources.get_file(tool_config)
-        flags = []
+        flags = []  # type: List[str]
         if format_file_name is not None:
             flags += ["-c", format_file_name]
         user_flags = self.get_user_flags(level)
         flags += user_flags
 
-        files = []
+        files = []  # type: List[str]
         if "md_src" in package:
             files += package["md_src"]
 
-        total_output = []
+        total_output = []  # type: List[str]
 
         for src in files:
             try:
-                exe = [tool_bin] + flags + [src]
+                exe = [tool_bin] + flags + [src]  # type: List[str]
                 output = subprocess.check_output(
                     exe, stderr=subprocess.STDOUT, universal_newlines=True
                 )
@@ -72,26 +74,26 @@ class MarkdownlintToolPlugin(ToolPlugin):
             for output in total_output:
                 f.write(output)
 
-        issues = self.parse_output(total_output)
+        issues = self.parse_output(total_output)  # type: List[Issue]
         return issues
 
-    def parse_output(self, total_output):
+    def parse_output(self, total_output: List[str]) -> List[Issue]:  # pylint: disable=too-many-locals
         """Parse tool output and report issues."""
-        markdownlint_re = r"(.+):(\d+)\s([^\s]+)\s(.+)"
-        markdownlint_re_with_col = r"(.+):(\d+):(\d+)\s([^\s]+)\s(.+)"
-        parse = re.compile(markdownlint_re)
-        parse_with_col = re.compile(markdownlint_re_with_col)
-        issues = []
+        markdownlint_re = r"(.+):(\d+)\s([^\s]+)\s(.+)"  # type: str
+        markdownlint_re_with_col = r"(.+):(\d+):(\d+)\s([^\s]+)\s(.+)"  # type: str
+        parse = re.compile(markdownlint_re)  # type: Pattern[str]
+        parse_with_col = re.compile(markdownlint_re_with_col)  # type: Pattern[str]
+        issues = []  # type: List[Issue]
 
         for output in total_output:
             for line in output.split("\n"):
-                match = parse_with_col.match(line)
-                if match:
-                    filename = match.group(1)
-                    line_number = match.group(2)
-                    issue_type = match.group(4)
+                match_with_col = parse_with_col.match(line)  # type: Optional[Match[str]]
+                if match_with_col:
+                    filename = match_with_col.group(1)
+                    line_number = match_with_col.group(2)
+                    issue_type = match_with_col.group(4)
                     severity = 3
-                    message = match.group(5)
+                    message = match_with_col.group(5)
                     issues.append(
                         Issue(
                             filename,
@@ -104,7 +106,7 @@ class MarkdownlintToolPlugin(ToolPlugin):
                         )
                     )
                 else:
-                    match = parse.match(line)
+                    match = parse.match(line)  # type: Optional[Match[str]]
                     if match:
                         filename = match.group(1)
                         line_number = match.group(2)

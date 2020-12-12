@@ -2,6 +2,7 @@
 
 ![Unit Tests](https://github.com/sscpac/statick-md/workflows/Unit%20Tests/badge.svg)
 ![Black](https://github.com/sscpac/statick-md/workflows/Black%20Formatting/badge.svg)
+[![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 [![PyPI version](https://badge.fury.io/py/statick-md.svg)](https://badge.fury.io/py/statick-md)
 [![Codecov](https://codecov.io/gh/sscpac/statick-md/branch/master/graph/badge.svg)](https://codecov.io/gh/sscpac/statick-md)
 ![Python Versions](https://img.shields.io/pypi/pyversions/statick-md.svg)
@@ -99,6 +100,21 @@ future regressions) if you can add a small unit test which replicates the bug.
 
 Before submitting a change, please run tox to check that you have not
 introduced any regressions or violated any code style guidelines.
+
+### Mypy
+
+Statick Markdown uses [mypy](http://mypy-lang.org/) to check that type hints are being followed properly.
+Type hints are described in [PEP 484](https://www.python.org/dev/peps/pep-0484/) and allow for static typing in Python.
+To determine if proper types are being used in Statick Markdown the following command will show any errors, and create several
+types of reports that can be viewed with a text editor or web browser.
+
+```shell
+python3 -m pip install mypy
+mkdir report
+mypy --ignore-missing-imports --strict --html-report report/ --txt-report report src
+```
+
+It is hoped that in the future we will generate coverage reports from mypy and use those to check for regressions.
 
 ### Formatting
 
