@@ -1,7 +1,6 @@
 # Statick Markdown Plugins
 
 ![Unit Tests](https://github.com/sscpac/statick-md/workflows/Unit%20Tests/badge.svg)
-![Black](https://github.com/sscpac/statick-md/workflows/Black%20Formatting/badge.svg)
 [![PyPI version](https://badge.fury.io/py/statick-md.svg)](https://badge.fury.io/py/statick-md)
 [![Codecov](https://codecov.io/gh/sscpac/statick-md/branch/master/graph/badge.svg)](https://codecov.io/gh/sscpac/statick-md)
 ![Python Versions](https://img.shields.io/pypi/pyversions/statick-md.svg)
