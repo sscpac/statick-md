@@ -91,9 +91,11 @@ jobs:
           python -m tox
 
       - name: Coveralls GitHub Action
+        if: matrix.os == 'ubuntu-18.04'
         # uses: coverallsapp/github-action@v1.1.2
         uses: AndreMiras/coveralls-python-action@develop
         with:
+          parrallel: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Statick Documentation
@@ -106,3 +108,12 @@ jobs:
         run: |
           mkdir statick-output
           statick . --output-directory statick-output --check --profile self_check.yaml
+
+  coveralls_finish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Coveralls Finished
+      uses: AndreMiras/coveralls-python-action@develop
+      with:
+        parallel-finished: true
