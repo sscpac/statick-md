@@ -91,7 +91,8 @@ jobs:
           python -m tox
 
       - name: Coveralls GitHub Action
-        uses: coverallsapp/github-action@v1.1.2
+        # uses: coverallsapp/github-action@v1.1.2
+        uses: AndreMiras/coveralls-python-action@develop
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
