@@ -90,11 +90,10 @@ jobs:
         run: |
           python -m tox
 
-      - name: Upload coverage to Codecov
-        if: matrix.os == 'ubuntu-18.04'
-        uses: codecov/codecov-action@v1
+      - name: Coveralls GitHub Action
+        uses: coverallsapp/github-action@v1.1.2
         with:
-          fail_ci_if_error: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Statick Documentation
         if: matrix.os == 'ubuntu-18.04'
