@@ -1,2 +1,2 @@
-codecov:
-  max_report_age: off
+fixes:
+  - "/home/runner/work/statick-md/statick-md/.tox/*/lib/python*/site-packages/statick_tool::src/statick_md"
