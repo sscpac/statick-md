@@ -87,6 +87,8 @@ jobs:
           src tests
 
       - name: Tox
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python -m tox
 
