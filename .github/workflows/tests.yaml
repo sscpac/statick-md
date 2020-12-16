@@ -89,6 +89,8 @@ jobs:
       - name: Tox
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COVERALLS_FLAG_NAME: ${{ matrix.test-name }}
+          COVERALLS_PARALLEL: true
         run: |
           python -m tox
 
@@ -102,3 +104,12 @@ jobs:
         run: |
           mkdir statick-output
           statick . --output-directory statick-output --check --profile self_check.yaml
+
+  coveralls_finish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Coveralls Finished
+        uses: AndreMiras/coveralls-python-action@develop
+        with:
+          parallel-finished: true
