@@ -3,6 +3,7 @@ relative_files = True
 
 [paths]
 source =
+    src/statick_md
     statick_md
     **/site-packages/statick_tool
     /home/runner/work/statick-md/statick-md/.tox/*/lib/python*/site-packages/statick_tool
