@@ -12,6 +12,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ### Removed
 
+## v0.0.5 - 2020-12-22
+
+### Added
+
+- Take advantange of new `DiscoveryPlugin.find_files` function that only walks a package's path once instead of
+  in each discovery plugin.
+  This should lead to a speed improvement in the discovery phase. (@xydesa)
+
 ## v0.0.4 - 2020-04-06
 
 ### Fixed
