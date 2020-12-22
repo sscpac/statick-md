@@ -19,7 +19,7 @@ class MarkdownDiscoveryPlugin(DiscoveryPlugin):
         """Scan package looking for Markdown files."""
         src_files = []
 
-        self.scan_once(package, level, exceptions)
+        self.find_files(package)
 
         for file_dict in package.files.values():
             if file_dict["name"].endswith(".md"):
