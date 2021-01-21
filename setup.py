@@ -19,7 +19,7 @@ setup(
     author="NIWC Pacific",
     name="statick-md",
     description="Statick analysis plugins for Markdown files.",
-    version="0.0.4",
+    version="0.0.6",
     packages=[
         "statick_tool",
         "statick_tool.plugins.discovery",
@@ -47,6 +47,8 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: Implementation :: PyPy",
         "Topic :: Software Development :: Testing",
     ],
 )

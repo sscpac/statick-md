@@ -1,9 +1,6 @@
 """Discover Markdown files to analyze."""
 
-from __future__ import print_function
-
-import fnmatch
-import os
+import logging
 from collections import OrderedDict
 from typing import List, Optional
 
@@ -23,22 +20,22 @@ class MarkdownDiscoveryPlugin(DiscoveryPlugin):  # type: ignore
         """Scan package looking for Markdown files."""
         src_files = []  # type: List[str]
 
-        for root, _, files in os.walk(package.path):
-            for f in fnmatch.filter(files, "*.md"):
-                full_path = os.path.join(root, f)
-                src_files.append(os.path.abspath(full_path))
+        self.find_files(package)
+
+        for file_dict in package.files.values():
+            if file_dict["name"].endswith(".md"):
+                src_files.append(file_dict["path"])
 
         src_files = list(OrderedDict.fromkeys(src_files))
 
-        print("  {} markdown files found.".format(len(src_files)))
+        logging.info("  %d markdown files found.", len(src_files))
         if exceptions:
             original_file_count = len(src_files)  # type: int
             src_files = exceptions.filter_file_exceptions_early(package, src_files)
             if original_file_count > len(src_files):
-                print(
-                    "  After filtering, {} markdown files will be scanned.".format(
-                        len(src_files)
-                    )
+                logging.info(
+                    "  After filtering, %d markdown files will be scanned.",
+                    len(src_files),
                 )
 
         package["md_src"] = src_files
