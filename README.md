@@ -25,7 +25,9 @@ Custom exceptions can be applied the same way they are with
 
 The recommended method to install these Statick plugins is via pip:
 
-    pip install statick-md
+```shell
+pip install statick-md
+```
 
 You can also clone the repository and use it locally.
 
@@ -33,8 +35,10 @@ You can also clone the repository and use it locally.
 
 Make sure you install all the dependencies from apt/npm:
 
-    cat install.txt | xargs sudo apt-get install -y
-    cat npm-deps.txt | xargs sudo npm install -g
+```shell
+cat install.txt | xargs sudo apt-get install -y
+cat npm-deps.txt | xargs sudo npm install -g
+```
 
 ### Dependency Versions
 
@@ -52,7 +56,9 @@ In that case your directory structure will look like the following:
 
 To run with the default configuration for the statick-md tools use:
 
-    statick md-project/ statick-output/ --profile md-profile.yaml
+```shell
+statick md-project/ statick-output/ --profile md-profile.yaml
+```
 
 ### Pip Install and Custom Configuration
 
@@ -70,7 +76,9 @@ This example will have custom exceptions in the md-project, such that the direct
 
 For this setup you will run the following:
 
-    statick md-project/ statick-output/ --user-paths md-project/statick-config/ --profile md-profile.yaml
+```shell
+statick md-project/ statick-output/ --user-paths md-project/statick-config/ --profile md-profile.yaml
+```
 
 ### Source Install and Custom Configuration
 
@@ -89,7 +97,9 @@ The directory structure will look like:
 Using the example where we want to override the default exceptions with
 custom ones in the md-project, the command to run would be:
 
-    ./statick/statick md-project/ statick-output/ --user-paths statick-md/,md-project/statick-config/ --profile md-profile.yaml
+```shell
+./statick/statick md-project/ statick-output/ --user-paths statick-md/,md-project/statick-config/ --profile md-profile.yaml
+```
 
 ## Tests and Contributing
 
@@ -121,5 +131,7 @@ It is hoped that in the future we will generate coverage reports from mypy and u
 Statick code is formatted using [black](https://github.com/psf/black).
 To fix locally use
 
-    pip install black
-    black src tests
+```shell
+pip install black
+black src tests
+```
