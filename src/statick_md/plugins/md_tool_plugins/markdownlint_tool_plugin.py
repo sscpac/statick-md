@@ -17,7 +17,8 @@ class MarkdownlintToolPlugin(ToolPlugin):  # type: ignore
         """Get name of tool."""
         return "markdownlint"
 
-    def scan(self, package: Package, level: str) -> Optional[List[Issue]]:  # pylint: disable=too-many-locals
+    # pylint: disable=too-many-locals
+    def scan(self, package: Package, level: str) -> Optional[List[Issue]]:
         """Run tool and gather output."""
         tool_bin = "markdownlint"  # type: str
 
@@ -73,7 +74,9 @@ class MarkdownlintToolPlugin(ToolPlugin):  # type: ignore
         issues = self.parse_output(total_output)  # type: List[Issue]
         return issues
 
-    def parse_output(self, total_output: List[str]) -> List[Issue]:  # pylint: disable=too-many-locals
+    # pylint: enable=too-many-locals
+
+    def parse_output(self, total_output: List[str]) -> List[Issue]:
         """Parse tool output and report issues."""
         markdownlint_re = r"(.+):(\d+)\s([^\s]+)\s(.+)"  # type: str
         markdownlint_re_with_col = r"(.+):(\d+):(\d+)\s([^\s]+)\s(.+)"  # type: str
@@ -83,40 +86,32 @@ class MarkdownlintToolPlugin(ToolPlugin):  # type: ignore
 
         for output in total_output:
             for line in output.split("\n"):
-                match_with_col = parse_with_col.match(line)  # type: Optional[Match[str]]
+                match_with_col = parse_with_col.match(
+                    line
+                )  # type: Optional[Match[str]]
                 if match_with_col:
-                    filename = match_with_col.group(1)
-                    line_number = match_with_col.group(2)
-                    issue_type = match_with_col.group(4)
-                    severity = 3
-                    message = match_with_col.group(5)
                     issues.append(
                         Issue(
-                            filename,
-                            line_number,
+                            match_with_col.group(1),
+                            match_with_col.group(2),
                             self.get_name(),
-                            issue_type,
-                            severity,
-                            message,
+                            match_with_col.group(4),
+                            3,
+                            match_with_col.group(5),
                             None,
                         )
                     )
                 else:
                     match = parse.match(line)  # type: Optional[Match[str]]
                     if match:
-                        filename = match.group(1)
-                        line_number = match.group(2)
-                        issue_type = match.group(3)
-                        severity = 3
-                        message = match.group(4)
                         issues.append(
                             Issue(
-                                filename,
-                                line_number,
+                                match.group(1),
+                                match.group(2),
                                 self.get_name(),
-                                issue_type,
-                                severity,
-                                message,
+                                match.group(3),
+                                3,
+                                match.group(4),
                                 None,
                             )
                         )
