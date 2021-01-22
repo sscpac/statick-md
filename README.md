@@ -5,7 +5,6 @@
 [![Codecov](https://codecov.io/gh/sscpac/statick-md/branch/master/graph/badge.svg)](https://codecov.io/gh/sscpac/statick-md)
 ![Python Versions](https://img.shields.io/pypi/pyversions/statick-md.svg)
 ![License](https://img.shields.io/pypi/l/statick-md.svg)
-![Black](https://github.com/sscpac/statick-md/workflows/Black%20Formatting/badge.svg)
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 ![Daily Downloads](https://img.shields.io/pypi/dd/statick-md.svg)
 ![Weekly Downloads](https://img.shields.io/pypi/dw/statick-md.svg)
