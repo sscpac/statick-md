@@ -12,6 +12,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ### Removed
 
+## v0.0.7 - 2021-01-22
+
+### Changed
+
+- Turned off line length checks for Markdown code blocks.
+
+### Added
+
+- Using type hints as introduced in Python 3.5 and improved in Python 3.6.
+  Type hints are described in [PEP 438](https://www.python.org/dev/peps/pep-0483/)
+  and [PEP 484](https://www.python.org/dev/peps/pep-0484/).
+  They provide static typing for methods and variables.
+  The use of mypy is encouraged to look for errors in expected types.
+
+### Removed
+
+- No longer supporting pypy3 due to issues with type hints and mypy.
+
 ## v0.0.6 - 2021-01-19
 
 ### Changed
