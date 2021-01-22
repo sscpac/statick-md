@@ -32,7 +32,7 @@ class MarkdownDiscoveryPlugin(DiscoveryPlugin):  # type: ignore
 
         logging.info("  %d markdown files found.", len(src_files))
         if exceptions:
-            original_file_count = len(src_files)  # type: int
+            original_file_count = len(src_files)
             src_files = exceptions.filter_file_exceptions_early(package, src_files)
             if original_file_count > len(src_files):
                 logging.info(
