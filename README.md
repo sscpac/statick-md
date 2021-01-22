@@ -25,7 +25,7 @@ Custom exceptions can be applied the same way they are with
 The recommended method to install these Statick plugins is via pip:
 
 ```shell
-pip install statick-md
+python3 -m pip install statick-md
 ```
 
 You can also clone the repository and use it locally.
@@ -56,7 +56,7 @@ In that case your directory structure will look like the following:
 To run with the default configuration for the statick-md tools use:
 
 ```shell
-statick md-project/ statick-output/ --profile md-profile.yaml
+statick md-project/ --output-directory statick-output/ --profile md-profile.yaml
 ```
 
 ### Pip Install and Custom Configuration
@@ -76,7 +76,7 @@ This example will have custom exceptions in the md-project, such that the direct
 For this setup you will run the following:
 
 ```shell
-statick md-project/ statick-output/ --user-paths md-project/statick-config/ --profile md-profile.yaml
+statick md-project/ --output-directory statick-output/ --user-paths md-project/statick-config/ --profile md-profile.yaml
 ```
 
 ### Source Install and Custom Configuration
@@ -97,7 +97,7 @@ Using the example where we want to override the default exceptions with
 custom ones in the md-project, the command to run would be:
 
 ```shell
-./statick/statick md-project/ statick-output/ --user-paths statick-md/,md-project/statick-config/ --profile md-profile.yaml
+./statick/statick md-project/ --output-directory statick-output/ --user-paths statick-md/,md-project/statick-config/ --profile md-profile.yaml
 ```
 
 ## Tests and Contributing
@@ -120,7 +120,7 @@ types of reports that can be viewed with a text editor or web browser.
 ```shell
 python3 -m pip install mypy
 mkdir report
-mypy --ignore-missing-imports --allow-untyped-decorators --strict --html-report report/ --txt-report report src
+mypy --ignore-missing-imports --strict --html-report report/ --txt-report report src
 ```
 
 It is hoped that in the future we will generate coverage reports from mypy and use those to check for regressions.
@@ -131,6 +131,6 @@ Statick code is formatted using [black](https://github.com/psf/black).
 To fix locally use
 
 ```shell
-pip install black
+python3 -m pip install black
 black src tests
 ```

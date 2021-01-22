@@ -88,7 +88,7 @@ jobs:
 
       - name: Mypy
         run: |
-          mypy --ignore-missing-imports --allow-untyped-decorators --strict src/
+          mypy --ignore-missing-imports --strict src/
 
       - name: Tox
         run: |
