@@ -20,9 +20,9 @@ class MarkdownlintToolPlugin(ToolPlugin):  # type: ignore
     # pylint: disable=too-many-locals
     def scan(self, package: Package, level: str) -> Optional[List[Issue]]:
         """Run tool and gather output."""
-        tool_bin = "markdownlint"  # type: str
+        tool_bin = "markdownlint"
 
-        tool_config = ".markdownlintrc"  # type: str
+        tool_config = ".markdownlintrc"
         user_config = self.plugin_context.config.get_tool_config(
             self.get_name(), level, "config"
         )
@@ -44,7 +44,7 @@ class MarkdownlintToolPlugin(ToolPlugin):  # type: ignore
 
         for src in files:
             try:
-                exe = [tool_bin] + flags + [src]  # type: List[str]
+                exe = [tool_bin] + flags + [src]
                 output = subprocess.check_output(
                     exe, stderr=subprocess.STDOUT, universal_newlines=True
                 )
@@ -78,8 +78,8 @@ class MarkdownlintToolPlugin(ToolPlugin):  # type: ignore
 
     def parse_output(self, total_output: List[str]) -> List[Issue]:
         """Parse tool output and report issues."""
-        markdownlint_re = r"(.+):(\d+)\s([^\s]+)\s(.+)"  # type: str
-        markdownlint_re_with_col = r"(.+):(\d+):(\d+)\s([^\s]+)\s(.+)"  # type: str
+        markdownlint_re = r"(.+):(\d+)\s([^\s]+)\s(.+)"
+        markdownlint_re_with_col = r"(.+):(\d+):(\d+)\s([^\s]+)\s(.+)"
         parse = re.compile(markdownlint_re)  # type: Pattern[str]
         parse_with_col = re.compile(markdownlint_re_with_col)  # type: Pattern[str]
         issues = []  # type: List[Issue]
