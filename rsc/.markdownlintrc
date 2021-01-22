@@ -5,6 +5,7 @@ no-inline-html: false
 line-length:
   line_length: 120
   tables: false
+  code_blocks: false
 no-duplicate-heading:
   siblings_only: true
 no-trailing-spaces:
