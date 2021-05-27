@@ -9,7 +9,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-18.04, windows-latest]
+        os: [macos-latest, ubuntu-18.04, ubuntu-20.04, windows-latest]
         python-version: [3.6, 3.7, 3.8, 3.9]
 
     steps:
@@ -59,8 +59,8 @@ jobs:
           python -m pip install -r requirements.txt
 
       # Have to install newer version from non-apt source due to SSL library compatibility issues.
-      - name: Install tools (Linux)
-        if: matrix.os == 'ubuntu-18.04'
+      - name: Install Node and node-based tools (Linux)
+        if: matrix.os == 'ubuntu-18.04' || matrix.os == 'ubuntu-20.04'
         run: |
           sudo apt install curl
           curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
@@ -87,18 +87,17 @@ jobs:
           python -m tox
 
       - name: Upload coverage to Codecov
-        if: matrix.os == 'ubuntu-18.04'
         uses: codecov/codecov-action@v1
         with:
           fail_ci_if_error: true
 
       - name: Statick Documentation
-        if: matrix.os == 'ubuntu-18.04'
+        if: matrix.os == 'ubuntu-18.04' || matrix.os == 'ubuntu-20.04'
         run: |
           statick . --check --user-paths . --profile documentation.yaml
 
       - name: Self check
-        if: matrix.os == 'ubuntu-18.04'
+        if: matrix.os == 'ubuntu-18.04' || matrix.os == 'ubuntu-20.04'
         run: |
           mkdir statick-output
           statick . --output-directory statick-output --check --profile self_check.yaml
