@@ -71,13 +71,6 @@ jobs:
           sudo npm install -g markdownlint-cli
           rm nodesource_setup.sh
 
-      - name: Test with black
-        if: matrix.python-version >= 3.6
-        run: >-
-          black --check --diff
-          --exclude tests/.*/*valid_package/*
-          src tests
-
       - name: Mypy
         run: |
           mypy --ignore-missing-imports --strict src/
