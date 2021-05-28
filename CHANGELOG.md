@@ -12,7 +12,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ### Removed
 
+## v0.0.8 - 2021-05-28
+
+### Changed
+
+- Switch type hints from comment style to inline style.
+- Renaming plugin directories to match Statick's directory structure.
+- Upgraded version of markdownlint-cli used in Actions to the latest available.
+- For testing with Actions, the installed version of Node was upgraded from v10 to v14.
+  Node v10 is no longer supported.
+  Node v14 is recommended by the developers as it is a long-term support (LTS) release.
+
+### Removed
+
+- Remove testing support for Ubuntu 16.04 and Python 3.5.
+  There is no guarantee Statick will work in those environments any longer.
+
 ## v0.0.7 - 2021-01-22
+
+This is expected to be the final release that supports Python 3.5.
+Ubuntu 16.04 has reached end-of-life status.
+The final release of ROS Kinetic has been made.
+See <https://github.com/sscpac/statick/discussions/290> for a discussion on Python 3.5 support in Statick.
 
 ### Changed
 
