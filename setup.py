@@ -37,7 +37,12 @@ setup(
     },
     long_description=long_description,
     long_description_content_type="text/markdown",
-    install_requires=["statick"],
+    install_requires=[
+        "restructuredtext_lint",
+        "rstcheck",
+        "sphinx",
+        "statick"
+    ],
     tests_require=TEST_DEPS,
     extras_require=EXTRAS,
     url="https://github.com/sscpac/statick-md",
