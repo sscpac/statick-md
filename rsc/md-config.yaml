@@ -1,4 +1,38 @@
 levels:
+  markdownlint:
+    discovery:
+      markdown:
+        flags: ""
+    tool:
+      markdownlint:
+        flags: ""
+
+  rst:
+    discovery:
+      rst:
+        flags: ""
+    tool:
+      rstcheck:
+        flags: ""
+      rstlint:
+        flags: ""
+
+  rstcheck:
+    discovery:
+      rst:
+        flags: ""
+    tool:
+      rstcheck:
+        flags: ""
+
+  rstlint:
+    discovery:
+      rst:
+        flags: ""
+    tool:
+      rstlint:
+        flags: ""
+
   md:
     discovery:
       markdown:
