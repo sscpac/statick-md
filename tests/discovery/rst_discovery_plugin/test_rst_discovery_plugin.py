@@ -74,7 +74,9 @@ def test_rst_discovery_plugin_scan_exceptions():
     exceptions = Exceptions(os.path.join(os.path.dirname(__file__), "exceptions.yaml"))
     discovery_plugin.scan(package, "level", exceptions)
     expected = ["test.rst"]
-    if discovery_plugin.file_command_exists():
+    # the file command on Mac OS X does not output the same as on linux for rst files.
+    # it does not include "restructuredtext" in the output
+    if sys.platform != "darwin" and discovery_plugin.file_command_exists():
         expected += ["oddextensionrst.source"]
     # We have to add the path to each of the above...yuck
     expected_fullpath = [os.path.join(package.path, filename) for filename in expected]
