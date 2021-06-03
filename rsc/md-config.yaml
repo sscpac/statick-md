@@ -3,8 +3,14 @@ levels:
     discovery:
       markdown:
         flags: ""
+      rst:
+        flags: ""
     tool:
       markdownlint:
+        flags: ""
+      rstcheck:
+        flags: ""
+      rstlint:
         flags: ""
 
   md_with_pylint:
