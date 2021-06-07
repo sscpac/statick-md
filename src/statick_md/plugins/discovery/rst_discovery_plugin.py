@@ -28,9 +28,6 @@ class RstDiscoveryPlugin(DiscoveryPlugin):  # type: ignore
             if file_dict["name"].endswith(".rst"):
                 src_files.append(file_dict["path"])
 
-            if "restructuredtext file" in file_dict["file_cmd_out"]:
-                src_files.append(file_dict["path"])
-
         src_files = list(OrderedDict.fromkeys(src_files))
 
         logging.info("  %d rst files found.", len(src_files))

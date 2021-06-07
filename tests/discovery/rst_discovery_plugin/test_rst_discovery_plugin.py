@@ -1,6 +1,5 @@
 """Unit tests for the rst discovery plugin."""
 import os
-import sys
 
 from yapsy.PluginManager import PluginManager
 
@@ -45,10 +44,6 @@ def test_rst_discovery_plugin_scan_valid():
     discovery_plugin = RstDiscoveryPlugin()
     discovery_plugin.scan(package, "level")
     expected = ["test.rst", os.path.join("ignore_this", "ignoreme.rst")]
-    # the file command on Mac OS X does not output the same as on linux for rst files.
-    # it does not include "restructuredtext" in the output
-    if sys.platform != "darwin" and discovery_plugin.file_command_exists():
-        expected += ["oddextensionrst.source"]
     # We have to add the path to each of the above...yuck
     expected_fullpath = [os.path.join(package.path, filename) for filename in expected]
     # Neat trick to verify that two unordered lists are the same
@@ -74,10 +69,6 @@ def test_rst_discovery_plugin_scan_exceptions():
     exceptions = Exceptions(os.path.join(os.path.dirname(__file__), "exceptions.yaml"))
     discovery_plugin.scan(package, "level", exceptions)
     expected = ["test.rst"]
-    # the file command on Mac OS X does not output the same as on linux for rst files.
-    # it does not include "restructuredtext" in the output
-    if sys.platform != "darwin" and discovery_plugin.file_command_exists():
-        expected += ["oddextensionrst.source"]
     # We have to add the path to each of the above...yuck
     expected_fullpath = [os.path.join(package.path, filename) for filename in expected]
     # Neat trick to verify that two unordered lists are the same
