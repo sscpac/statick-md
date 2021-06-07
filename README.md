@@ -10,15 +10,22 @@
 ![Weekly Downloads](https://img.shields.io/pypi/dw/statick-md.svg)
 ![Monthly Downloads](https://img.shields.io/pypi/dm/statick-md.svg)
 
-This is a set of plugins for [Statick](https://github.com/sscpac/statick) that will discover Markdown (md)
-files and perform static analysis on those files.
-
-The current plugins will discover Markdown files in a project and can be configured to check those files using
-
-- [markdownlint](https://github.com/DavidAnson/markdownlint)
+This is a set of plugins for [Statick](https://github.com/sscpac/statick) that will discover documentation related files
+and perform static analysis on those files.
 
 Custom exceptions can be applied the same way they are with
 [Statick exceptions](https://github.com/sscpac/statick/blob/master/GUIDE.md#exceptionsyaml).
+
+## Table of Contents
+
+* [Installation](#installation)
+* [Usage](#usage)
+* [Existing Plugins](#existing-plugins)
+  * [Discovery Plugins](#discovery-plugins)
+  * [Tool Plugins](#tool-plugins)
+* [Contributing](#contributing)
+  * [Mypy](#mypy)
+  * [Formatting](#formatting)
 
 ## Installation
 
@@ -49,9 +56,11 @@ To mitigate this you can pin the version of markdownlint-cli in npm-deps.txt by 
 The most common usage is to use statick and statick-md from pip.
 In that case your directory structure will look like the following:
 
-- doc
-  - md-project
-  - statick-output
+```shell
+project-root
+ |- md-project
+ |- statick-output
+```
 
 To run with the default configuration for the statick-md tools use:
 
@@ -66,12 +75,14 @@ This is usually done to run a different set of tools than are called out in the 
 For this case you will have to add the new Statick configuration somewhere.
 This example will have custom exceptions in the md-project, such that the directory structure is:
 
-- doc
-  - md-project
-    - statick-config
-      - rsc
-        - exceptions.yaml
-  - statick-output
+```shell
+project-root
+ |- md-project
+ |- statick-config
+     |- rsc
+         |- exceptions.yaml
+ |- statick-output
+```
 
 For this setup you will run the following:
 
@@ -84,14 +95,16 @@ statick md-project/ --output-directory statick-output/ --user-paths md-project/s
 The last type of setup will be to have all of the tools available from cloning repositories, not installing from pip.
 The directory structure will look like:
 
-- doc
-  - md-project
-    - statick-config
-      - rsc
-        - exceptions.yaml
-  - statick-output
-  - statick
-  - statick-md
+```shell
+project-root
+ |- md-project
+ |- statick-config
+     |- rsc
+         |- exceptions.yaml
+ |- statick-output
+ |- statick
+ |- statick-md
+```
 
 Using the example where we want to override the default exceptions with
 custom ones in the md-project, the command to run would be:
@@ -117,7 +130,7 @@ Tool | About
 [rstcheck][rstcheck]         | Checks syntax of reStructuredText and code blocks nested within it.
 [rst-lint][rst-lint]         | Checks syntax of reStructuredText and code blocks nested within it.
 
-## Tests and Contributing
+## Contributing
 
 If you write a new feature for Statick or are fixing a bug,
 you are strongly encouraged to add unit tests for your contribution.
