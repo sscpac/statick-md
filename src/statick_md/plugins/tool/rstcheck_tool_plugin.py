@@ -22,15 +22,15 @@ class RstcheckToolPlugin(ToolPlugin):  # type: ignore
         """Run tool and gather output."""
         tool_bin = "rstcheck"
 
-        flags = []  # type: List[str]
+        flags: List[str] = []
         user_flags = self.get_user_flags(level)
         flags += user_flags
 
-        files = []  # type: List[str]
+        files: List[str] = []
         if "rst_src" in package:
             files += package["rst_src"]
 
-        total_output = []  # type: List[str]
+        total_output: List[str] = []
 
         for src in files:
             try:
@@ -61,7 +61,7 @@ class RstcheckToolPlugin(ToolPlugin):  # type: ignore
             for output in total_output:
                 fid.write(str(output))
 
-        issues = self.parse_output(total_output)  # type: List[Issue]
+        issues: List[Issue] = self.parse_output(total_output)
         return issues
 
     # pylint: enable=too-many-locals
@@ -69,12 +69,12 @@ class RstcheckToolPlugin(ToolPlugin):  # type: ignore
     def parse_output(self, total_output: List[str]) -> List[Issue]:
         """Parse tool output and report issues."""
         rstcheck_re = r"(.+):(\d+):\s\((.+)/(\d)\)\s(.+)"
-        parse = re.compile(rstcheck_re)  # type: Pattern[str]
-        issues = []  # type: List[Issue]
+        parse: Pattern[str] = re.compile(rstcheck_re)
+        issues: List[Issue] = []
 
         for output in total_output:
             for line in output.split("\n"):
-                match = parse.match(line)  # type: Optional[Match[str]]
+                match: Optional[Match[str]] = parse.match(line)
                 if match:
                     issues.append(
                         Issue(

@@ -21,16 +21,16 @@ class RstlintToolPlugin(ToolPlugin):  # type: ignore
     # pylint: disable=too-many-locals
     def scan(self, package: Package, level: str) -> Optional[List[Issue]]:
         """Run tool and gather output."""
-        flags = []  # type: List[str]
+        flags: List[str] = []
         user_flags = self.get_user_flags(level)
         flags += user_flags
 
         print(package)
-        files = []  # type: List[str]
+        files: List[str] = []
         if "rst_src" in package:
             files += package["rst_src"]
 
-        total_output = []  # type: List[SystemMessage]
+        total_output: List[SystemMessage] = []
 
         for src in files:
             output = restructuredtext_lint.lint_file(src, None, flags)
@@ -43,14 +43,14 @@ class RstlintToolPlugin(ToolPlugin):  # type: ignore
             for output in total_output:
                 fid.write(str(output))
 
-        issues = self.parse_output(total_output)  # type: List[Issue]
+        issues: List[Issue] = self.parse_output(total_output)
         return issues
 
     # pylint: enable=too-many-locals
 
     def parse_output(self, total_output: List[SystemMessage]) -> List[Issue]:
         """Parse tool output and report issues."""
-        issues = []  # type: List[Issue]
+        issues: List[Issue] = []
 
         for output in total_output:
             issues.append(
