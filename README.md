@@ -100,6 +100,23 @@ custom ones in the md-project, the command to run would be:
 ./statick/statick md-project/ --output-directory statick-output/ --user-paths statick-md/,md-project/statick-config/ --profile md-profile.yaml
 ```
 
+## Existing Plugins
+
+### Discovery Plugins
+
+File Type | Extensions
+:-------- | :---------
+markdown         | `.md`
+reStructuredText | `.rst`
+
+### Tool Plugins
+
+Tool | About
+:--- | :----
+[markdownlint][markdownlint] | A Node.js style checker and lint tool for Markdown/CommonMark files.
+[rstcheck][rstcheck]         | Checks syntax of reStructuredText and code blocks nested within it.
+[rst-lint][rst-lint]         | Checks syntax of reStructuredText and code blocks nested within it.
+
 ## Tests and Contributing
 
 If you write a new feature for Statick or are fixing a bug,
@@ -134,3 +151,7 @@ To fix locally use
 python3 -m pip install black
 black src tests
 ```
+
+[markdownlint]: <https://github.com/igorshubovych/markdownlint-cli>
+[rstcheck]: <https://github.com/myint/rstcheck>
+[rst-lint]: <https://github.com/twolfson/restructuredtext-lint>
