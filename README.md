@@ -152,6 +152,6 @@ python3 -m pip install black
 black src tests
 ```
 
-[markdownlint]: <https://github.com/igorshubovych/markdownlint-cli>
-[rstcheck]: <https://github.com/myint/rstcheck>
-[rst-lint]: <https://github.com/twolfson/restructuredtext-lint>
+[markdownlint]: https://github.com/igorshubovych/markdownlint-cli
+[rstcheck]: https://github.com/myint/rstcheck
+[rst-lint]: https://github.com/twolfson/restructuredtext-lint
