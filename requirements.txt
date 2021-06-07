@@ -1,1 +1,4 @@
 statick
+restructuredtext-lint
+rstcheck
+sphinx
