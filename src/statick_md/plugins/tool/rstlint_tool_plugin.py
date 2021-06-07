@@ -25,7 +25,6 @@ class RstlintToolPlugin(ToolPlugin):  # type: ignore
         user_flags = self.get_user_flags(level)
         flags += user_flags
 
-        print(package)
         files: List[str] = []
         if "rst_src" in package:
             files += package["rst_src"]

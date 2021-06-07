@@ -82,7 +82,7 @@ class RstcheckToolPlugin(ToolPlugin):  # type: ignore
                             match.group(2),
                             self.get_name(),
                             match.group(3),
-                            int(match.group(4)),
+                            match.group(4),
                             match.group(5),
                             None,
                         )

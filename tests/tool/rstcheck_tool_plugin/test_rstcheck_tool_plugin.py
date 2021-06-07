@@ -106,7 +106,7 @@ def test_rstcheck_tool_plugin_parse_valid():
     assert issues[0].line_number == "305"
     assert issues[0].tool == "rstcheck"
     assert issues[0].issue_type == "WARNING"
-    assert issues[0].severity == 2
+    assert issues[0].severity == "2"
     assert issues[0].message == "Title underline too short."
 
 
@@ -123,7 +123,7 @@ def test_rstcheck_tool_plugin_scan_calledprocesserror(mock_subprocess_check_outp
     """
     Test what happens when a CalledProcessError is raised (usually means rstcheck hit an error).
 
-    Expected result: issues is None
+    Expected result: no issues found
     """
     mock_subprocess_check_output.side_effect = subprocess.CalledProcessError(
         0, "", output="mocked error"
