@@ -51,6 +51,7 @@ jobs:
           python -m pip install --upgrade wheel
           python -m pip install --upgrade coverage
           python -m pip install --upgrade mypy
+          python -m pip install --upgrade types-docutils
           python -m pip install --upgrade statick
           python -m pip install --upgrade statick-md
           python -m pip install --upgrade tox
