@@ -7,8 +7,8 @@ Github: https://github.com/amperser/proselint
 """
 import json
 import logging
-import subprocess
 from typing import Any, Dict, List, Optional
+import proselint
 
 from statick_tool.issue import Issue
 from statick_tool.package import Package
@@ -27,7 +27,7 @@ class ProselintToolPlugin(ToolPlugin):
         if "md_src" not in package or not package["md_src"]:
             return []
 
-        tool_bin: str = "proselint"
+        # tool_bin: str = "proselint"
 
         # Get output in JSON format.
         flags: List[str] = ["--json"]
@@ -36,30 +36,18 @@ class ProselintToolPlugin(ToolPlugin):
         files: List[str] = []
         if "md_src" in package:
             files += package["md_src"]
+        print("files: {}".format(files))
 
         # The JSON output does not include the filename so we have to run each file
         # one at a time, and store the output along with the filename in a dictionary.
         # The filename may be added to JSON output in the future:
         # https://github.com/amperser/proselint/issues/355
         output: Dict[str, Any] = {}
-        for fid in files:
-            try:
-                subproc_args = [tool_bin] + flags + [fid]
-                output[fid] = subprocess.check_output(
-                    subproc_args, stderr=subprocess.STDOUT, universal_newlines=True
-                )
-
-            # We expect a CalledProcessError if issues are discovered by the tool.
-            except subprocess.CalledProcessError as ex:
-                output[fid] = ex.output
-                if ex.returncode != 1:
-                    logging.warning("proselint failed! Returncode = %d", ex.returncode)
-                    logging.warning("%s exception: %s", self.get_name(), ex.output)
-                    return None
-
-            except OSError as ex:
-                logging.warning("Couldn't find %s! (%s)", tool_bin, ex)
-                return None
+        for filename in files:
+            with open(filename) as fid:
+                errors = proselint.tools.errors_to_json(proselint.tools.lint(fid))
+                print("errors: {}".format(errors))
+                output[filename] = errors
 
         for key, value in output.items():
             logging.debug("%s: %s", key, value)
@@ -108,6 +96,6 @@ class ProselintToolPlugin(ToolPlugin):
                     None,
                 )
 
-            issues.append(issue)
+                issues.append(issue)
 
         return issues
