@@ -27,8 +27,6 @@ class ProselintToolPlugin(ToolPlugin):
         if "md_src" not in package or not package["md_src"]:
             return []
 
-        # tool_bin: str = "proselint"
-
         # Get output in JSON format.
         flags: List[str] = ["--json"]
         flags += self.get_user_flags(level)
@@ -36,7 +34,6 @@ class ProselintToolPlugin(ToolPlugin):
         files: List[str] = []
         if "md_src" in package:
             files += package["md_src"]
-        print("files: {}".format(files))
 
         # The JSON output does not include the filename so we have to run each file
         # one at a time, and store the output along with the filename in a dictionary.
@@ -46,7 +43,6 @@ class ProselintToolPlugin(ToolPlugin):
         for filename in files:
             with open(filename) as fid:
                 errors = proselint.tools.errors_to_json(proselint.tools.lint(fid))
-                print("errors: {}".format(errors))
                 output[filename] = errors
 
         for key, value in output.items():
