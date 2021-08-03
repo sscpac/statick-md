@@ -1,4 +1,5 @@
 statick
+proselint
 restructuredtext-lint
 rstcheck
 sphinx
