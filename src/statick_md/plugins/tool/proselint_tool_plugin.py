@@ -4,6 +4,11 @@ The output from the tool is collected in JSON format to facilitate parsing.
 
 Website: http://proselint.com/
 Github: https://github.com/amperser/proselint
+
+The tool uses the default proselint configuration file.
+On Ubuntu this is at `~/.config/proselint/config`.
+
+https://github.com/amperser/proselint#checks
 """
 import json
 import logging
@@ -71,9 +76,7 @@ class ProselintToolPlugin(ToolPlugin):
                 ):
                     logging.debug("  Found invalid proselint output: %s", item)
                     continue
-                if item["severity"] == "style":
-                    warning_level = "1"
-                elif item["severity"] == "info":
+                if item["severity"] == "suggestion":
                     warning_level = "1"
                 elif item["severity"] == "warning":
                     warning_level = "3"

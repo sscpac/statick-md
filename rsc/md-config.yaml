@@ -7,6 +7,14 @@ levels:
       markdownlint:
         flags: ""
 
+  proselint:
+    discovery:
+      markdown:
+        flags: ""
+    tool:
+      proselint:
+        flags: ""
+
   rst:
     discovery:
       rst:
@@ -42,16 +50,22 @@ levels:
     tool:
       markdownlint:
         flags: ""
+      proselint:
+        flags: ""
       rstcheck:
         flags: ""
       rstlint:
         flags: ""
 
   md_with_pylint:
-    inherits_from: "md"
+    # inherits_from: "md"
     discovery:
-      python:
+      markdown:
         flags: ""
+      # python:
+      #   flags: ""
     tool:
-      pylint:
-        flags: "--good-names=f,i,j,k,x,y,z,ex,_"
+      # pylint:
+      #   flags: "--good-names=f,i,j,k,x,y,z,ex,_"
+      proselint:
+        flags: ""
