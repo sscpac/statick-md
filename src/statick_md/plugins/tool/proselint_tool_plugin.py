@@ -13,6 +13,7 @@ https://github.com/amperser/proselint#checks
 import json
 import logging
 from typing import Any, Dict, List, Optional
+
 import proselint
 
 from statick_tool.issue import Issue
@@ -53,11 +54,10 @@ class ProselintToolPlugin(ToolPlugin):
         for key, value in output.items():
             logging.debug("%s: %s", key, value)
 
-        if self.plugin_context and self.plugin_context.args.output_directory:
-            with open(self.get_name() + ".log", "w") as fid:
-                for key, value in output.items():
-                    combined = key + value
-                    fid.write(combined)
+        with open(self.get_name() + ".log", "w") as fid:
+            for key, value in output.items():
+                combined = key + value
+                fid.write(combined)
 
         issues: List[Issue] = self.parse_output(output)
         return issues
@@ -66,7 +66,11 @@ class ProselintToolPlugin(ToolPlugin):
         """Parse tool output and report issues."""
         issues: List[Issue] = []
         for key, value in output.items():
-            data = json.loads(value)["data"]["errors"]
+            try:
+                data = json.loads(value)["data"]["errors"]
+            except KeyError as ex:
+                logging.warning("%s exception: %s", self.get_name(), ex)
+                continue
             for item in data:
                 if (
                     "check" not in item
