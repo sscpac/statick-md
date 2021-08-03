@@ -65,7 +65,7 @@ project-root
 To run with the default configuration for the statick-md tools use:
 
 ```shell
-statick md-project/ --output-directory statick-output/ --profile md-profile.yaml
+statick md-project/ --output-directory statick-output/ --profile md-profile.yaml --config md-config.yaml
 ```
 
 ### Pip Install and Custom Configuration
@@ -87,7 +87,7 @@ project-root
 For this setup you will run the following:
 
 ```shell
-statick md-project/ --output-directory statick-output/ --user-paths md-project/statick-config/ --profile md-profile.yaml
+statick md-project/ --output-directory statick-output/ --user-paths md-project/statick-config/ --profile md-profile.yaml --config md-config.yaml
 ```
 
 ### Source Install and Custom Configuration
@@ -110,7 +110,7 @@ Using the example where we want to override the default exceptions with
 custom ones in the md-project, the command to run would be:
 
 ```shell
-./statick/statick md-project/ --output-directory statick-output/ --user-paths statick-md/,md-project/statick-config/ --profile md-profile.yaml
+./statick/statick md-project/ --output-directory statick-output/ --user-paths statick-md/,statick-md/src/statick_md,md-project/statick-config/ --profile md-profile.yaml --config md-config.yaml
 ```
 
 ## Existing Plugins
