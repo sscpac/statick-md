@@ -58,14 +58,10 @@ levels:
         flags: ""
 
   md_with_pylint:
-    # inherits_from: "md"
+    inherits_from: "md"
     discovery:
-      markdown:
+      python:
         flags: ""
-      # python:
-      #   flags: ""
     tool:
-      # pylint:
-      #   flags: "--good-names=f,i,j,k,x,y,z,ex,_"
-      proselint:
-        flags: ""
+      pylint:
+        flags: "--good-names=f,i,j,k,x,y,z,ex,_"
