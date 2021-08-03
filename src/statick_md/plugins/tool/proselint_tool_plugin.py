@@ -21,7 +21,7 @@ from statick_tool.package import Package
 from statick_tool.tool_plugin import ToolPlugin
 
 
-class ProselintToolPlugin(ToolPlugin):
+class ProselintToolPlugin(ToolPlugin):  # type: ignore
     """Apply proselint tool and gather results."""
 
     def get_name(self) -> str:
