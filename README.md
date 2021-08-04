@@ -127,7 +127,7 @@ reStructuredText | `.rst`
 Tool | About
 :--- | :----
 [markdownlint][markdownlint] | A Node.js style checker and lint tool for Markdown/CommonMark files.
-[proselint][markdownlint]    | A linter for prose.
+[proselint][proselint]       | A linter for prose.
 [rstcheck][rstcheck]         | Checks syntax of reStructuredText and code blocks nested within it.
 [rst-lint][rst-lint]         | Checks syntax of reStructuredText and code blocks nested within it.
 
