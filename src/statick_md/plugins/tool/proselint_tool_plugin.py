@@ -1,7 +1,5 @@
 """Apply proselint tool and gather results.
 
-The output from the tool is collected in JSON format to facilitate parsing.
-
 Website: http://proselint.com/
 Github: https://github.com/amperser/proselint
 
@@ -32,10 +30,6 @@ class ProselintToolPlugin(ToolPlugin):  # type: ignore
         """Run tool and gather output."""
         if "md_src" not in package or not package["md_src"]:
             return []
-
-        # Get output in JSON format.
-        flags: List[str] = ["--json"]
-        flags += self.get_user_flags(level)
 
         files: List[str] = []
         if "md_src" in package:
