@@ -130,6 +130,7 @@ Tool | About
 [proselint][proselint]       | A linter for prose.
 [rstcheck][rstcheck]         | Checks syntax of reStructuredText and code blocks nested within it.
 [rst-lint][rst-lint]         | Checks syntax of reStructuredText and code blocks nested within it.
+[write-good]                 | Naive linter for English prose.
 
 ## Contributing
 
@@ -170,3 +171,4 @@ black src tests
 [proselint]: https://github.com/amperser/proselint
 [rstcheck]: https://github.com/myint/rstcheck
 [rst-lint]: https://github.com/twolfson/restructuredtext-lint
+[write-good]: https://github.com/btford/write-good
