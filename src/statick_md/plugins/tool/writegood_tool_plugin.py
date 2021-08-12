@@ -1,4 +1,7 @@
-"""Apply writegood tool and gather results."""
+"""Apply writegood tool and gather results.
+
+Website: https://github.com/btford/write-good
+"""
 
 import logging
 import re
@@ -17,7 +20,6 @@ class WriteGoodToolPlugin(ToolPlugin):  # type: ignore
         """Get name of tool."""
         return "writegood"
 
-    # pylint: disable=too-many-locals
     def scan(self, package: Package, level: str) -> Optional[List[Issue]]:
         """Run tool and gather output."""
         tool_bin = "writegood"
@@ -40,12 +42,13 @@ class WriteGoodToolPlugin(ToolPlugin):  # type: ignore
             total_output.append(output)
 
         except subprocess.CalledProcessError as ex:
-            if ex.returncode in (0, 255):  # writegood returns 0 or 255 upon linting errors
+            if ex.returncode in (
+                0,
+                255,
+            ):  # writegood returns 0 or 255 upon linting errors
                 total_output.append(ex.output)
             else:
-                logging.warning(
-                    "%s failed! Returncode = %d", tool_bin, ex.returncode
-                )
+                logging.warning("%s failed! Returncode = %d", tool_bin, ex.returncode)
                 logging.warning("%s exception: %s", self.get_name(), ex.output)
                 return None
 
@@ -62,8 +65,6 @@ class WriteGoodToolPlugin(ToolPlugin):  # type: ignore
 
         issues: List[Issue] = self.parse_output(total_output)
         return issues
-
-    # pylint: enable=too-many-locals
 
     def parse_output(self, total_output: List[str]) -> List[Issue]:
         """Parse tool output and report issues."""
