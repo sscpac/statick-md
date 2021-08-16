@@ -1,4 +1,4 @@
-# Test Markdown file:
+# Test reStructuredText file:
 
 
 So the cat was stolen.
