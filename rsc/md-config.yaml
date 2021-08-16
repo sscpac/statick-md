@@ -41,6 +41,16 @@ levels:
       rstlint:
         flags: ""
 
+  writegood:
+    discovery:
+      markdown:
+        flags: ""
+      rst:
+        flags: ""
+    tool:
+      writegood:
+        flags: ""
+
   md:
     discovery:
       markdown:
