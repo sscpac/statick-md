@@ -45,6 +45,8 @@ levels:
     discovery:
       markdown:
         flags: ""
+      rst:
+        flags: ""
     tool:
       writegood:
         flags: ""
