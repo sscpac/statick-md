@@ -22,7 +22,7 @@ class WriteGoodToolPlugin(ToolPlugin):  # type: ignore
 
     def scan(self, package: Package, level: str) -> Optional[List[Issue]]:
         """Run tool and gather output."""
-        tool_bin = "writegood"
+        tool_bin = "write-good"
 
         flags: List[str] = ["--parse"]
         user_flags = self.get_user_flags(level)
@@ -31,6 +31,8 @@ class WriteGoodToolPlugin(ToolPlugin):  # type: ignore
         files: List[str] = []
         if "md_src" in package:
             files += package["md_src"]
+        if "rst_src" in package:
+            files += package["rst_src"]
 
         total_output: List[str] = []
 
@@ -82,7 +84,7 @@ class WriteGoodToolPlugin(ToolPlugin):  # type: ignore
                             match.group(2),
                             self.get_name(),
                             "suggestion",
-                            "3",
+                            "1",
                             match.group(4),
                             None,
                         )
