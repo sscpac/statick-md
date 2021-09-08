@@ -8,11 +8,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ### Added
 
+- [proselint](https://github.com/amperser/proselint) tool plugin and tests. (Thomas Denewiler, @tdenewiler, #38, #39)
+- [write-good](https://github.com/btford/write-good) tool plugin and tests. (Thomas Denewiler, @tdenewiler, #41)
 - reStructuredText discovery plugin and tests.
 - [rstcheck](https://github.com/myint/rstcheck) tool plugin and tests.
 - [rst-lint](https://github.com/twolfson/restructuredtext-lint) tool plugin and tests.
 
 ### Fixed
+
+- Specifying an encoding when calling open (pylint: W1514).
 
 ### Removed
 
