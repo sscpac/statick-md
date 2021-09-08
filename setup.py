@@ -3,8 +3,8 @@
 
 from setuptools import setup
 
-with open("README.md", encoding="utf8") as f:
-    long_description = f.read()  # pylint: disable=invalid-name
+with open("README.md", encoding="utf8") as fid:
+    long_description = fid.read()  # pylint: disable=invalid-name
 
 TEST_DEPS = [
     "mock",
