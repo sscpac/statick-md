@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ### Added
 
+### Fixed
+
+### Removed
+
+## v0.0.9 - 2021-09-08
+
+### Added
+
 - [proselint](https://github.com/amperser/proselint) tool plugin and tests. (Thomas Denewiler, @tdenewiler, #38, #39)
 - [write-good](https://github.com/btford/write-good) tool plugin and tests. (Thomas Denewiler, @tdenewiler, #41)
 - reStructuredText discovery plugin and tests.
@@ -17,8 +25,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Fixed
 
 - Specifying an encoding when calling open (pylint: [W1514](https://pylint.pycqa.org/en/latest/technical_reference/features.html)).
-
-### Removed
 
 ## v0.0.8 - 2021-05-28
 
