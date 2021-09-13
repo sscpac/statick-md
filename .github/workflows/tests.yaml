@@ -1,7 +1,12 @@
 ---
 name: Unit Tests
 
-on: [pull_request, push]  # NOLINT
+on:  # NOLINT
+  pull_request:
+  push:
+  schedule:
+    - cron: '0 3 * * MON'  # 0300 on Mondays
+  workflow_dispatch:
 
 jobs:
   build:
