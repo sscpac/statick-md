@@ -85,8 +85,13 @@ jobs:
       - name: Proselint
         run: |
           cd tests/tool/proselint_tool_plugin/valid_package
+          echo 'version'
           proselint --version
+          echo 'test_no_issues.md'
+          cat test_no_issues.md
           proselint test_no_issues.md
+          echo 'test.md'
+          cat test.md
           proselint test.md
 
       - name: Tox
