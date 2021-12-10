@@ -82,6 +82,13 @@ jobs:
         run: |
           mypy --ignore-missing-imports --strict src/
 
+      - name: Proselint
+        run: |
+          cd tests/tool/proselint_tool_plugin/valid_package
+          proselint --version
+          proselint test_no_issues.md
+          proselint test.md
+
       - name: Tox
         run: |
           python -m tox
