@@ -23,7 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ### Fixed
 
-- Switch use of codecov-action from v1 to v2 for increased stability when uploading reports. (Thomas Denewiler, @tdenewiler, #45)
+- Switch use of codecov-action from v1 to v2 for increased stability when uploading reports.
+  (Thomas Denewiler, @tdenewiler, #45)
 - Use quotes for version numbers in YAML to avoid truncating trailing zeros. (Thomas Denewiler, @tdenewiler, #48)
 - Fix proselint tests by changing exclamation point to a period in test Markdown files. (Thomas Denewiler, @tdenewiler, #50)
 
