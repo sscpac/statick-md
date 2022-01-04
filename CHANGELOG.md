@@ -12,6 +12,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ### Removed
 
+## v0.0.10 - 2022-01-04
+
+### Added
+
+- Add Python 3.10 support. (Thomas Denewiler, @tdenewiler, #48)
+- Add weekly tests and a manual trigger to the test workflow.
+- Switch testing environment from macos-latest to macos-10.15.
+  This is to retain support for Python 3.6. (Thomas Denewiler, @tdenewiler, #46)
+
+### Fixed
+
+- Switch use of codecov-action from v1 to v2 for increased stability when uploading reports.
+  (Thomas Denewiler, @tdenewiler, #45)
+- Use quotes for version numbers in YAML to avoid truncating trailing zeros. (Thomas Denewiler, @tdenewiler, #48)
+- Fix proselint tests by changing exclamation point to a period in test Markdown files. (Thomas Denewiler, @tdenewiler, #50)
+
 ## v0.0.9 - 2021-09-08
 
 ### Added
