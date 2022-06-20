@@ -69,7 +69,7 @@ levels:
 
   md_with_pylint:
     inherits_from:
-        - "md"
+      - "md"
     discovery:
       python:
         flags: ""
