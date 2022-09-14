@@ -12,6 +12,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ### Removed
 
+## v0.1.1 - 2022-09-14
+
+### Changed
+
+- Updated usage of `inherits_from` in config file to new list format. (#57, @gregtkogut)
+- Pin flake8 version to less than v5 until https://github.com/tholo/pytest-flake8/issues/87 is fixed. (#58)
+
 ## v0.1.0 - 2022-01-04
 
 ### Removed
