@@ -68,7 +68,9 @@ class WriteGoodToolPlugin(ToolPlugin):  # type: ignore
         issues: List[Issue] = self.parse_output(total_output)
         return issues
 
-    def parse_output(self, total_output: List[str]) -> List[Issue]:
+    def parse_output(
+        self, total_output: List[str], package: Optional[Package] = None
+    ) -> List[Issue]:
         """Parse tool output and report issues."""
         writegood_re = r"(.+):(\d+):(\d+):(.+)"
         parse: Pattern[str] = re.compile(writegood_re)

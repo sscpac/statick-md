@@ -76,7 +76,9 @@ class MarkdownlintToolPlugin(ToolPlugin):  # type: ignore
 
     # pylint: enable=too-many-locals
 
-    def parse_output(self, total_output: List[str]) -> List[Issue]:
+    def parse_output(
+        self, total_output: List[str], package: Optional[Package] = None
+    ) -> List[Issue]:
         """Parse tool output and report issues."""
         markdownlint_re = r"(.+):(\d+)\s([^\s]+)\s(.+)"
         markdownlint_re_with_col = r"(.+):(\d+):(\d+)\s([^\s]+)\s(.+)"

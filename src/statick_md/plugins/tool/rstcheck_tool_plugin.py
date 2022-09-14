@@ -66,7 +66,9 @@ class RstcheckToolPlugin(ToolPlugin):  # type: ignore
 
     # pylint: enable=too-many-locals
 
-    def parse_output(self, total_output: List[str]) -> List[Issue]:
+    def parse_output(
+        self, total_output: List[str], package: Optional[Package] = None
+    ) -> List[Issue]:
         """Parse tool output and report issues."""
         rstcheck_re = r"(.+):(\d+):\s\((.+)/(\d)\)\s(.+)"
         parse: Pattern[str] = re.compile(rstcheck_re)
