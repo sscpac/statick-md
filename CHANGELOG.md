@@ -12,6 +12,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ### Removed
 
+## v0.1.1 - 2022-10-10
+
+### Fixed
+
+- Ignore some docutils.utils SystemMessage type hints. (Thomas Denewiler, @tdenewiler, #56)
+- Update 'inherits_from' to new format. (Greg Kogut, @gregtkogut, #57)
+- Pin flake7 to less than versoin 5. (Alex Xydes, @xydesa, #58)
+
 ## v0.1.0 - 2022-01-04
 
 ### Removed
