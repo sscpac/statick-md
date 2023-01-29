@@ -6,9 +6,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## Unreleased
 
+Using current fixes of running tools against all files at once instead of one file at a time on the
+<https://github.com/github/opensource.guide> repository finds 238 Markdown files and shows significant decrease in
+execution time.
+
+```shell
+INFO:root:Scanning package opensource.guide (/home/user/src/opensource.guide) at level documentation
+INFO:root:---Discovery---
+INFO:root:Running markdown discovery plugin...
+INFO:root:  299 markdown files found.
+INFO:root:  After filtering, 238 markdown files will be scanned.
+INFO:root:markdown discovery plugin done.
+```
+
+| package          | name             | plugin_type | duration (main) | duration (unreleased) |
+| ---------------- | ---------------- | ----------- | --------------- | --------------------- |
+| opensource.guide | find files       |  Discovery  | 4.9255          |  4.9149               |
+| opensource.guide | markdown         |  Discovery  | 0.0088          |  0.0086               |
+| opensource.guide | markdownlint     |    Tool     | 28.0523         |  0.8511               |
+| opensource.guide | print_to_console |  Reporting  | 0.4227          |  0.3386               |
+| Overall          |                  |             | 34.5287         |  7.2445               |
+
 ### Added
 
 ### Fixed
+
+- 
 
 ### Removed
 
