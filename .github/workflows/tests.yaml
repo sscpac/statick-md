@@ -89,7 +89,7 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
-          fail_ci_if_error: true
+          fail_ci_if_error: false
 
       - name: Statick Documentation
         if: matrix.os == 'ubuntu-18.04' || matrix.os == 'ubuntu-20.04'
