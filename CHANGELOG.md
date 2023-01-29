@@ -29,9 +29,10 @@ INFO:root:markdown discovery plugin done.
 
 ### Added
 
-### Fixed
+- Process all source files at once with tools that support passing in a list of files, instead of invoking each tool
+  per file.
 
-- 
+### Fixed
 
 ### Removed
 

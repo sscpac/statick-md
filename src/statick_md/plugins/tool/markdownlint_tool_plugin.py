@@ -54,9 +54,7 @@ class MarkdownlintToolPlugin(ToolPlugin):  # type: ignore
             if ex.returncode == 1:  # markdownlint returns 1 upon linting errors
                 total_output.append(ex.output)
             else:
-                logging.warning(
-                    "%s failed! Returncode = %d", tool_bin, ex.returncode
-                )
+                logging.warning("%s failed! Returncode = %d", tool_bin, ex.returncode)
                 logging.warning("%s exception: %s", self.get_name(), ex.output)
                 return None
 
