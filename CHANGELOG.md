@@ -31,10 +31,14 @@ INFO:root:markdown discovery plugin done.
 
 - Process all source files at once with tools that support passing in a list of files, instead of invoking each tool
   per file.
+- Running continuous integration workflows with Ubuntu 22.04.
+- Running continuous integration workflows with Python 3.11.
 
 ### Fixed
 
 ### Removed
+
+- No longer supporting Ubuntu 18.04 in automated continuous integration workflows.
 
 ## v0.1.1 - 2022-10-10
 
