@@ -8,9 +8,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ### Added
 
-### Fixed
+- Ubuntu 22.04 used in continuous integration workflows.
+- Python 3.11 used in continuous integration workflows.
+
+### Changed
+
+- Update GitHub Actions to use latest versions.
 
 ### Removed
+
+- Ubuntu 18.04 removed from continuous integration workflows.
 
 ## v0.1.1 - 2022-10-10
 
