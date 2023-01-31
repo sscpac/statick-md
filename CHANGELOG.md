@@ -27,6 +27,16 @@ INFO:root:markdown discovery plugin done.
 | opensource.guide | print_to_console |  Reporting  | 0.4227          |  0.3386               |
 | Overall          |                  |             | 34.5287         |  7.2445               |
 
+| package  | name             | plugin_type | duration (unreleased) |
+| -------- | ---------------- | ----------- | --------------------- |
+| pcl_blog | find files       | Discovery   |  5.9158               |
+| pcl_blog | markdown         | Discovery   |  0.0026               |
+| pcl_blog | rst              | Discovery   |  0.0083               |
+| pcl_blog | markdownlint     | Tool        |  0.1017               |
+| pcl_blog | rstcheck         | Tool        |  0.4774               |
+| pcl_blog | print_to_console | Reporting   |  0.0017               |
+| Overall  |                  |             |  6.6186               |
+
 ### Added
 
 - Process all source files at once with tools that support passing in a list of files, instead of invoking each tool
