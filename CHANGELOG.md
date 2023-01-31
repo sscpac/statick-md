@@ -27,15 +27,22 @@ INFO:root:markdown discovery plugin done.
 | opensource.guide | print_to_console |  Reporting  | 0.4227          |  0.3386               |
 | Overall          |                  |             | 34.5287         |  7.2445               |
 
-| package  | name             | plugin_type | duration (unreleased) |
-| -------- | ---------------- | ----------- | --------------------- |
-| pcl_blog | find files       | Discovery   |  5.9158               |
-| pcl_blog | markdown         | Discovery   |  0.0026               |
-| pcl_blog | rst              | Discovery   |  0.0083               |
-| pcl_blog | markdownlint     | Tool        |  0.1017               |
-| pcl_blog | rstcheck         | Tool        |  0.4774               |
-| pcl_blog | print_to_console | Reporting   |  0.0017               |
-| Overall  |                  |             |  6.6186               |
+Testing the `rstcheck` tool plugin against the <https://github.com/PointCloudLibrary/blog> repository shows
+improvements for scanning all files at once.
+Statick discovered 353 rst files in this repository.
+
+| package  | name             | plugin_type | duration (main) | duration (unreleased) |
+| -------- | ---------------- | ----------- | --------------- | --------------------- |
+| pcl_blog | find files       | Discovery   | 5.9150          |  5.9158               |
+| pcl_blog | markdown         | Discovery   | 0.0033          |  0.0026               |
+| pcl_blog | rst              | Discovery   | 0.0090          |  0.0083               |
+| pcl_blog | markdownlint     | Tool        | 0.0994          |  0.1017               |
+| pcl_blog | rstcheck         | Tool        | 114.8899        |  0.4774               |
+| pcl_blog | print_to_console | Reporting   | 0.0021          |  0.0017               |
+| Overall  |                  |             | 121.0291        |  6.6186               |
+
+(Note that this testing was done with a local fix in the Statick `exceptions` module for a `UnicodeDecodeError`.
+That fix will get pushed to Statick in the future.)
 
 ### Added
 
