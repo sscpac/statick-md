@@ -30,15 +30,17 @@ INFO:root:markdown discovery plugin done.
 ### Added
 
 - Process all source files at once with tools that support passing in a list of files, instead of invoking each tool
-  per file.
-- Running continuous integration workflows with Ubuntu 22.04.
-- Running continuous integration workflows with Python 3.11.
+  per file. (#63)
+- Ubuntu 22.04 used in continuous integration workflows. (#62)
+- Python 3.11 used in continuous integration workflows. (#62)
 
-### Fixed
+### Changed
+
+- Update GitHub Actions to use latest versions. (#62)
 
 ### Removed
 
-- No longer supporting Ubuntu 18.04 in automated continuous integration workflows.
+- Ubuntu 18.04 removed from continuous integration workflows. (#62)
 
 ## v0.1.1 - 2022-10-10
 
