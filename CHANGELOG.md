@@ -6,18 +6,58 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## Unreleased
 
+Using current fixes of running tools against all files at once instead of one file at a time on the
+<https://github.com/github/opensource.guide> repository finds 238 Markdown files and shows significant decrease in
+execution time.
+
+```shell
+INFO:root:Scanning package opensource.guide (/home/user/src/opensource.guide) at level documentation
+INFO:root:---Discovery---
+INFO:root:Running markdown discovery plugin...
+INFO:root:  299 markdown files found.
+INFO:root:  After filtering, 238 markdown files will be scanned.
+INFO:root:markdown discovery plugin done.
+```
+
+| package          | name             | plugin_type | duration (main) | duration (unreleased) |
+| ---------------- | ---------------- | ----------- | --------------- | --------------------- |
+| opensource.guide | find files       |  Discovery  | 4.9255          |  4.9149               |
+| opensource.guide | markdown         |  Discovery  | 0.0088          |  0.0086               |
+| opensource.guide | markdownlint     |    Tool     | 28.0523         |  0.8511               |
+| opensource.guide | print_to_console |  Reporting  | 0.4227          |  0.3386               |
+| Overall          |                  |             | 34.5287         |  7.2445               |
+
+Testing the `rstcheck` tool plugin against the <https://github.com/PointCloudLibrary/blog> repository shows
+improvements for scanning all files at once.
+Statick discovered 353 rst files in this repository.
+
+| package  | name             | plugin_type | duration (main) | duration (unreleased) |
+| -------- | ---------------- | ----------- | --------------- | --------------------- |
+| pcl_blog | find files       | Discovery   | 5.9150          |  5.9158               |
+| pcl_blog | markdown         | Discovery   | 0.0033          |  0.0026               |
+| pcl_blog | rst              | Discovery   | 0.0090          |  0.0083               |
+| pcl_blog | markdownlint     | Tool        | 0.0994          |  0.1017               |
+| pcl_blog | rstcheck         | Tool        | 114.8899        |  0.4774               |
+| pcl_blog | print_to_console | Reporting   | 0.0021          |  0.0017               |
+| Overall  |                  |             | 121.0291        |  6.6186               |
+
+(Note that this testing was done with a local fix in the Statick `exceptions` module for a `UnicodeDecodeError`.
+That fix will get pushed to Statick in the future.)
+
 ### Added
 
-- Ubuntu 22.04 used in continuous integration workflows.
-- Python 3.11 used in continuous integration workflows.
+- Process all source files at once with tools that support passing in a list of files, instead of invoking each tool
+  per file. (#63)
+- Ubuntu 22.04 used in continuous integration workflows. (#62)
+- Python 3.11 used in continuous integration workflows. (#62)
 
 ### Changed
 
-- Update GitHub Actions to use latest versions.
+- Update GitHub Actions to use latest versions. (#62)
 
 ### Removed
 
-- Ubuntu 18.04 removed from continuous integration workflows.
+- Ubuntu 18.04 removed from continuous integration workflows. (#62)
 
 ## v0.1.1 - 2022-10-10
 
