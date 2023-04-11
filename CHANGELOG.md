@@ -55,6 +55,10 @@ That fix will get pushed to Statick in the future.)
 
 - Update GitHub Actions to use latest versions. (#62)
 
+### Fixed
+
+- Ensuring that "Cannot find module" thrown errors from nodejs in markdownlint tool plugin cause statick to error. (#64)
+
 ### Removed
 
 - Ubuntu 18.04 removed from continuous integration workflows. (#62)
