@@ -62,6 +62,8 @@ That fix will get pushed to Statick in the future.)
 ### Removed
 
 - Ubuntu 18.04 removed from continuous integration workflows. (#62)
+- Removed deprecated pypi package [codecov](https://github.com/codecov/codecov-python) from Tox configuration. (#)
+  Discussion at: (https://community.codecov.com/t/codecov-yanked-from-pypi-all-versions/4259).
 
 ## v0.1.1 - 2022-10-10
 
