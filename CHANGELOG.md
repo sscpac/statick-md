@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## Unreleased
 
-## 2023-04-24
+## v0.1.2 - 2023-04-24
 
 Using current fixes of running tools against all files at once instead of one file at a time on the
 <https://github.com/github/opensource.guide> repository finds 238 Markdown files and shows significant decrease in
