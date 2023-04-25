@@ -10,7 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ### Changed
 
-- Updated publish workflow runner to Ubuntu 22.04 since 18.04 is removed. (#67)
+- Updated publish workflow runner to Ubuntu 22.04 since 18.04 is removed. (#68)
 
 ## v0.1.2 - 2023-04-24
 
