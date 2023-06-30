@@ -65,6 +65,13 @@ jobs:
           python -m pip install --upgrade tox-gh-actions
           python -m pip install --upgrade virtualenv
 
+      # Have to install newer version from non-apt source due to SSL library compatibility issues.
+      - name: Install Node and node-based tools (Linux)
+        if: matrix.os == 'ubuntu-20.04' || matrix.os == 'ubuntu-22.04'
+        run: |
+          npm install -g markdownlint-cli
+          npm install -g write-good
+
       - name: Mypy
         run: |
           mypy --ignore-missing-imports --strict src/
