@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "statick-md"
+authors = [{name = "NIWC Pacific"}]
+description="Statick analysis plugins for Markdown files."
+version = "0.1.3"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "CC0-1.0"}
+classifiers = [
+    "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development :: Testing",
+]
+dependencies = [
+    "mypy",
+    "proselint",
+    "restructuredtext-lint",
+    "rstcheck",
+    "sphinx",
+    "statick",
+    "types-docutils",
+]
+
+[tool.setuptools.package-data]
+statick_tool = [
+    "plugins/*.py",
+    "plugins/discovery/*",
+    "plugins/tool/*",
+    "rsc/*",
+    "rsc/.*",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/sscpac/statick-md"
+"Bug Tracker" = "https://github.com/sscpac/statick-md/issues"
+[project.optional-dependencies]
+testing = [
+    "backports.tempfile",
+    "coverage",
+    "mock",
+    "pytest",
+    "tox",
+    "tox-gh-actions",
+]
+docs = [
+    "sphinx==1.7.9",
+    "travis-sphinx==2.2.1",
+    "yaml-1.3",
+    "yapsy",
+]
