@@ -40,12 +40,20 @@ statick_tool = [
 [project.urls]
 "Homepage" = "https://github.com/sscpac/statick-md"
 "Bug Tracker" = "https://github.com/sscpac/statick-md/issues"
+
 [project.optional-dependencies]
-testing = [
+test = [
     "backports.tempfile",
     "coverage",
+    "flake8-pep3101",
+    "flake8<5",  # Pin until https://github.com/tholo/pytest-flake8/issues/87 is fixed.
     "mock",
+    "pycodestyle<2.9.0",  # Pin until https://github.com/tholo/pytest-flake8/issues/87 is fixed.
+    "pydocstyle",
     "pytest",
+    "pytest-cov",
+    "pytest-flake8",
+    "pytest-isort",
     "tox",
     "tox-gh-actions",
 ]
