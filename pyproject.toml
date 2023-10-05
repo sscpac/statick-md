@@ -31,9 +31,8 @@ dependencies = [
 
 [tool.setuptools.package-data]
 statick_tool = [
-    "plugins/*.py",
-    "plugins/discovery/*",
-    "plugins/tool/*",
+    "plugins/discovery/*.yapsy-plugin",
+    "plugins/tool/*.yapsy-plugin",
     "rsc/*",
     "rsc/.*",
 ]
