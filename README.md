@@ -18,14 +18,20 @@ Custom exceptions can be applied the same way they are with
 
 ## Table of Contents
 
-* [Installation](#installation)
-* [Usage](#usage)
-* [Existing Plugins](#existing-plugins)
-  * [Discovery Plugins](#discovery-plugins)
-  * [Tool Plugins](#tool-plugins)
-* [Contributing](#contributing)
-  * [Mypy](#mypy)
-  * [Formatting](#formatting)
+- [Statick Markdown Plugins](#statick-markdown-plugins)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Dependency Versions](#dependency-versions)
+    - [Pip Install](#pip-install)
+    - [Pip Install and Custom Configuration](#pip-install-and-custom-configuration)
+    - [Source Install and Custom Configuration](#source-install-and-custom-configuration)
+  - [Existing Plugins](#existing-plugins)
+    - [Discovery Plugins](#discovery-plugins)
+    - [Tool Plugins](#tool-plugins)
+  - [Contributing](#contributing)
+    - [Mypy](#mypy)
+    - [Formatting](#formatting)
 
 ## Installation
 
@@ -42,8 +48,8 @@ You can also clone the repository and use it locally.
 Make sure you install all the dependencies from apt/npm:
 
 ```shell
-cat install.txt | xargs sudo apt-get install -y
-cat npm-deps.txt | xargs sudo npm install -g
+sudo apt-get install -y npm
+sudo npm install -g markdownlint-cli
 ```
 
 ### Dependency Versions
