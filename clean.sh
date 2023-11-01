@@ -1,5 +1,5 @@
 #!/bin/bash
 
-rm -rf build/ dist/ output-py* .pytest_cache statick_md.egg-info/ statick_output/* .tox/
+rm -rf build/ .coverage dist/ output-py* .pytest_cache statick_md.egg-info/ statick_output/* .tox/
 find . -type d -name .mypy_cache -exec rm -rf {} +;
 find . -type d -name __pycache__ -exec rm -rf {} +;
