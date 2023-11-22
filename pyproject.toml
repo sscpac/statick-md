@@ -26,7 +26,7 @@ dependencies = [
     "restructuredtext-lint",
     "rstcheck",
     "sphinx",
-    "statick",
+    "statick@git+https://github.com/tdenewiler/statick#egg=stdlib-plugins",  # Remove URL after Statick release.
     "types-docutils",
 ]
 
@@ -64,7 +64,7 @@ test = [
     "pytest-cov",
     "pytest-flake8",
     "pytest-isort",
-    "statick",
+    "statick@git+https://github.com/tdenewiler/statick#egg=stdlib-plugins",  # Remove URL after Statick release.
     "tox",
     "tox-gh-actions",
 ]
