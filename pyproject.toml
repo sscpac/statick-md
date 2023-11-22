@@ -17,9 +17,11 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Topic :: Software Development :: Testing",
 ]
 dependencies = [
+    "importlib_metadata",
     "proselint",
     "restructuredtext-lint",
     "rstcheck",
@@ -30,11 +32,20 @@ dependencies = [
 
 [tool.setuptools.package-data]
 statick_tool = [
-    "plugins/discovery/*.yapsy-plugin",
-    "plugins/tool/*.yapsy-plugin",
     "rsc/*",
     "rsc/.*",
 ]
+
+[project.entry-points."statick_tool.plugins.discovery"]
+markdown = "statick_tool.plugins.discovery.markdown:MarkdownDiscoveryPlugin"
+rst = "statick_tool.plugins.discovery.rst:RstDiscoveryPlugin"
+
+[project.entry-points."statick_tool.plugins.tool"]
+markdownlint = "statick_tool.plugins.tool.markdownlint:MarkdownlintToolPlugin"
+proselint = "statick_tool.plugins.tool.proselint:ProselintToolPlugin"
+rstcheck = "statick_tool.plugins.tool.rstcheck:RstcheckToolPlugin"
+rstlint = "statick_tool.plugins.tool.rstlint:RstlintToolPlugin"
+writegood = "statick_tool.plugins.tool.writegood:WriteGoodToolPlugin"
 
 [project.urls]
 "Homepage" = "https://github.com/sscpac/statick-md"
@@ -42,7 +53,6 @@ statick_tool = [
 
 [project.optional-dependencies]
 test = [
-    "backports.tempfile",
     "coverage",
     "flake8-pep3101",
     "flake8<5",  # Pin until https://github.com/tholo/pytest-flake8/issues/87 is fixed.

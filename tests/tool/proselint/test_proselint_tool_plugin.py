@@ -1,19 +1,21 @@
 """Unit tests for the proselint plugin."""
-
 import argparse
 import json
 import os
-
 import pytest
-from yapsy.PluginManager import PluginManager
+import sys
 
 import statick_tool
 from statick_tool.config import Config
 from statick_tool.package import Package
 from statick_tool.plugin_context import PluginContext
-from statick_tool.plugins.tool.proselint_tool_plugin import ProselintToolPlugin
+from statick_tool.plugins.tool.proselint import ProselintToolPlugin
 from statick_tool.resources import Resources
-from statick_tool.tool_plugin import ToolPlugin
+
+if sys.version_info < (3, 10):
+    from importlib_metadata import entry_points
+else:
+    from importlib.metadata import entry_points
 
 
 def setup_proselint_tool_plugin():
@@ -41,27 +43,13 @@ def setup_proselint_tool_plugin():
 
 def test_proselint_tool_plugin_found():
     """Test that the plugin manager can find the proselint plugin."""
-    manager = PluginManager()
-    # Get the path to statick_tool/__init__.py, get the directory part, and
-    # add 'plugins' to that to get the standard plugins dir
-    manager.setPluginPlaces(
-        [os.path.join(os.path.dirname(statick_tool.__file__), "plugins")]
-    )
-    manager.setCategoriesFilter(
-        {
-            "Tool": ToolPlugin,
-        }
-    )
-    manager.collectPlugins()
-    # Verify that a plugin's get_name() function returns "proselint"
+    plugins = {}
+    tool_plugins = entry_points(group="statick_tool.plugins.tool")
+    for plugin_type in tool_plugins:
+        plugin = plugin_type.load()
+        plugins[plugin_type.name] = plugin()
     assert any(
-        plugin_info.plugin_object.get_name() == "proselint"
-        for plugin_info in manager.getPluginsOfCategory("Tool")
-    )
-    # While we're at it, verify that a plugin is named proselint Tool Plugin
-    assert any(
-        plugin_info.name == "Proselint Tool Plugin"
-        for plugin_info in manager.getPluginsOfCategory("Tool")
+        plugin.get_name() == "proselint" for _, plugin in list(plugins.items())
     )
 
 
