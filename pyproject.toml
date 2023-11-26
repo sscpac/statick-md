@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -54,12 +54,8 @@ writegood = "statick_tool.plugins.tool.writegood:WriteGoodToolPlugin"
 [project.optional-dependencies]
 test = [
     "coverage",
-    "flake8-pep3101",
-    "flake8<5",  # Pin until https://github.com/tholo/pytest-flake8/issues/87 is fixed.
+    "lark",
     "mock",
-    "mypy",
-    "pycodestyle<2.9.0",  # Pin until https://github.com/tholo/pytest-flake8/issues/87 is fixed.
-    "pydocstyle",
     "pytest",
     "pytest-cov",
     "statick",
@@ -70,3 +66,6 @@ docs = [
     "sphinx==1.7.9",
     "yaml-1.3",
 ]
+
+[tool.isort]
+profile = "black"
