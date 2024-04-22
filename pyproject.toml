@@ -56,9 +56,8 @@ test = [
     "coverage",
     "lark",
     "mock",
-    "pytest",
+    "pytest==8.0.0",
     "pytest-cov",
-    "statick",
     "tox",
     "tox-gh-actions",
 ]
