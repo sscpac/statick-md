@@ -45,7 +45,7 @@ jobs:
 
       - name: Mypy
         run: |
-          mypy --ignore-missing-imports --strict src/
+          mypy --ignore-missing-imports --strict src/statick_tool/
 
       - name: Tox
         run: |

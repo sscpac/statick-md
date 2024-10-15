@@ -8,6 +8,7 @@ On Ubuntu this is at `~/.config/proselint/config`.
 
 https://github.com/amperser/proselint#checks
 """
+
 import json
 import logging
 from typing import Any, Dict, List, Optional
