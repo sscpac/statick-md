@@ -22,7 +22,6 @@ classifiers = [
 ]
 dependencies = [
     "importlib_metadata",
-    "proselint",
     "restructuredtext-lint",
     "rstcheck",
     "sphinx",
@@ -42,7 +41,6 @@ rst = "statick_tool.plugins.discovery.rst:RstDiscoveryPlugin"
 
 [project.entry-points."statick_tool.plugins.tool"]
 markdownlint = "statick_tool.plugins.tool.markdownlint:MarkdownlintToolPlugin"
-proselint = "statick_tool.plugins.tool.proselint:ProselintToolPlugin"
 rstcheck = "statick_tool.plugins.tool.rstcheck:RstcheckToolPlugin"
 rstlint = "statick_tool.plugins.tool.rstlint:RstlintToolPlugin"
 writegood = "statick_tool.plugins.tool.writegood:WriteGoodToolPlugin"
