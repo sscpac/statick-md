@@ -44,8 +44,8 @@ class ProselintToolPlugin(ToolPlugin):  # type: ignore
         output: Dict[str, Any] = {}
         for filename in files:
             with open(filename, encoding="utf8") as fid:
-                errors = proselint.tools.errors_to_json(
-                    proselint.tools.lint(fid, config=proselint_default)
+                errors = proselint.tools.errors_to_json(  # type: ignore
+                    proselint.tools.lint(fid, config=proselint_default)  # type: ignore
                 )
                 output[filename] = errors
 
