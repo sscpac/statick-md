@@ -54,6 +54,8 @@ npm config set prefix '~/.local/'
 ```
 
 Make sure `~/.local/bin` exists.
+Check your `PATH` with `echo $PATH`.
+If `~/.local/bin` is not listed then add it to your `PATH`.
 
 ```shell
 mkdir -p ~/.local/bin
