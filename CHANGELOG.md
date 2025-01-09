@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
   - Unable to get line coverage working with new plugin mechanism.
     Unit tests still work to find problems.
 - Updated README to use more modern approach to installing Python and NPM packages.
+- Rename plugin modules so they are shorter and less redundant.
 
 ### Removed
 
