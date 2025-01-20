@@ -25,7 +25,7 @@ dependencies = [
     "restructuredtext-lint",
     "rstcheck",
     "sphinx",
-    "statick@git+https://github.com/tdenewiler/statick@stdlib-plugins",
+    "statick",
     "types-docutils",
 ]
 
