@@ -7,14 +7,6 @@ levels:
       markdownlint:
         flags: ""
 
-  proselint:
-    discovery:
-      markdown:
-        flags: ""
-    tool:
-      proselint:
-        flags: ""
-
   rst:
     discovery:
       rst:
@@ -59,8 +51,6 @@ levels:
         flags: ""
     tool:
       markdownlint:
-        flags: ""
-      proselint:
         flags: ""
       rstcheck:
         flags: ""

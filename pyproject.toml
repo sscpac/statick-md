@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "statick-md"
+authors = [{name = "NIWC Pacific"}]
+description="Statick analysis plugins for Markdown files."
+version = "0.1.3"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "CC0-1.0"}
+classifiers = [
+    "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Testing",
+]
+dependencies = [
+    "importlib_metadata",
+    "restructuredtext-lint",
+    "rstcheck",
+    "sphinx",
+    "statick",
+    "types-docutils",
+]
+
+[tool.setuptools.package-data]
+statick_tool = [
+    "rsc/*",
+    "rsc/.*",
+]
+
+[project.entry-points."statick_tool.plugins.discovery"]
+markdown = "statick_tool.plugins.discovery.markdown:MarkdownDiscoveryPlugin"
+rst = "statick_tool.plugins.discovery.rst:RstDiscoveryPlugin"
+
+[project.entry-points."statick_tool.plugins.tool"]
+markdownlint = "statick_tool.plugins.tool.markdownlint:MarkdownlintToolPlugin"
+rstcheck = "statick_tool.plugins.tool.rstcheck:RstcheckToolPlugin"
+rstlint = "statick_tool.plugins.tool.rstlint:RstlintToolPlugin"
+writegood = "statick_tool.plugins.tool.writegood:WriteGoodToolPlugin"
+
+[project.urls]
+"Homepage" = "https://github.com/sscpac/statick-md"
+"Bug Tracker" = "https://github.com/sscpac/statick-md/issues"
+
+[project.optional-dependencies]
+test = [
+    "coverage",
+    "lark",
+    "mock",
+    "pytest",
+    "pytest-cov",
+    "tox",
+    "tox-gh-actions",
+]
+docs = [
+    "sphinx==1.7.9",
+    "yaml-1.3",
+]
+
+[tool.isort]
+profile = "black"

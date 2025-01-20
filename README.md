@@ -18,38 +18,61 @@ Custom exceptions can be applied the same way they are with
 
 ## Table of Contents
 
-* [Installation](#installation)
-* [Usage](#usage)
-* [Existing Plugins](#existing-plugins)
-  * [Discovery Plugins](#discovery-plugins)
-  * [Tool Plugins](#tool-plugins)
-* [Contributing](#contributing)
-  * [Mypy](#mypy)
-  * [Formatting](#formatting)
+- [Statick Markdown Plugins](#statick-markdown-plugins)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Dependency Versions](#dependency-versions)
+    - [Pip Install](#pip-install)
+    - [Pip Install and Custom Configuration](#pip-install-and-custom-configuration)
+  - [Existing Plugins](#existing-plugins)
+    - [Discovery Plugins](#discovery-plugins)
+    - [Tool Plugins](#tool-plugins)
+  - [Contributing](#contributing)
+    - [Mypy](#mypy)
+    - [Formatting](#formatting)
 
 ## Installation
 
 The recommended method to install these Statick plugins is via pip:
 
 ```shell
-python3 -m pip install statick-md
+pip install statick-md
 ```
 
 You can also clone the repository and use it locally.
 
 ## Usage
 
-Make sure you install all the dependencies from apt/npm:
+Make sure you install all the dependencies from apt/npm.
+See <https://github.com/nodesource/distributions> for Node/npm installation instructions.
+
+Configure npm to allow a non-root user to install packages.
 
 ```shell
-cat install.txt | xargs sudo apt-get install -y
-cat npm-deps.txt | xargs sudo npm install -g
+npm config set prefix '~/.local/'
+```
+
+Make sure `~/.local/bin` exists.
+Check your `PATH` with `echo $PATH`.
+If `~/.local/bin` is not listed then add it to your `PATH`.
+
+```shell
+mkdir -p ~/.local/bin
+echo 'export PATH="$HOME/.local/bin/:$PATH"' >> ~/.bashrc
+```
+
+Install packages.
+
+```shell
+npm install -g markdownlint-cli
+npm install -g write-good
 ```
 
 ### Dependency Versions
 
 Markdownlint-cli has occasionally changed defaults via an upgrade that results in lots of new warnings.
-To mitigate this you can pin the version of markdownlint-cli in npm-deps.txt by changing `markdownlint-cli` to `markdownlint-cli@0.19`.
+To mitigate this you can pin the version of markdownlint-cli when installing by changing `markdownlint-cli` to `markdownlint-cli@0.19`.
 
 ### Pip Install
 
@@ -59,13 +82,12 @@ In that case your directory structure will look like the following:
 ```shell
 project-root
  |- md-project
- |- statick-output
 ```
 
 To run with the default configuration for the statick-md tools use:
 
 ```shell
-statick md-project/ --output-directory statick-output/ --profile md-profile.yaml --config md-config.yaml
+statick md-project/ -o /tmp/statick-output/ --level md --log info
 ```
 
 ### Pip Install and Custom Configuration
@@ -77,40 +99,16 @@ This example will have custom exceptions in the md-project, such that the direct
 
 ```shell
 project-root
- |- md-project
- |- statick-config
-     |- rsc
-         |- exceptions.yaml
- |- statick-output
+|- md-project
+    |- statick-config
+        |- rsc
+            |- exceptions.yaml
 ```
 
 For this setup you will run the following:
 
 ```shell
-statick md-project/ --output-directory statick-output/ --user-paths md-project/statick-config/ --profile md-profile.yaml --config md-config.yaml
-```
-
-### Source Install and Custom Configuration
-
-The last type of setup will be to have all of the tools available from cloning repositories, not installing from pip.
-The directory structure will look like:
-
-```shell
-project-root
- |- md-project
- |- statick-config
-     |- rsc
-         |- exceptions.yaml
- |- statick-output
- |- statick
- |- statick-md
-```
-
-Using the example where we want to override the default exceptions with
-custom ones in the md-project, the command to run would be:
-
-```shell
-./statick/statick md-project/ --output-directory statick-output/ --user-paths statick-md/,statick-md/src/statick_md,md-project/statick-config/ --profile md-profile.yaml --config md-config.yaml
+statick md-project/ --o /tmp/statick-output/ -u md-project/statick-config/ --level md
 ```
 
 ## Existing Plugins
@@ -127,7 +125,6 @@ reStructuredText | `.rst`
 Tool | About
 :--- | :----
 [markdownlint][markdownlint] | A Node.js style checker and lint tool for Markdown/CommonMark files.
-[proselint][proselint]       | A linter for prose.
 [rstcheck][rstcheck]         | Checks syntax of reStructuredText and code blocks nested within it.
 [rst-lint][rst-lint]         | Checks syntax of reStructuredText and code blocks nested within it.
 [write-good]                 | Naive linter for English prose.
@@ -150,12 +147,10 @@ To determine if proper types are being used in Statick Markdown the following co
 types of reports that can be viewed with a text editor or web browser.
 
 ```shell
-python3 -m pip install mypy
+pip install mypy
 mkdir report
-mypy --ignore-missing-imports --strict --html-report report/ --txt-report report src
+mypy --ignore-missing-imports --strict src
 ```
-
-It is hoped that in the future we will generate coverage reports from mypy and use those to check for regressions.
 
 ### Formatting
 
@@ -163,12 +158,11 @@ Statick code is formatted using [black](https://github.com/psf/black).
 To fix locally use
 
 ```shell
-python3 -m pip install black
+pip install black
 black src tests
 ```
 
 [markdownlint]: https://github.com/igorshubovych/markdownlint-cli
-[proselint]: https://github.com/amperser/proselint
 [rstcheck]: https://github.com/myint/rstcheck
 [rst-lint]: https://github.com/twolfson/restructuredtext-lint
 [write-good]: https://github.com/btford/write-good

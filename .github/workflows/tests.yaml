@@ -14,86 +14,55 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-20.04, ubuntu-22.04, windows-latest]
-        python-version: ['3.8', '3.9', '3.10', '3.11']
+        os: [macos-latest, ubuntu-20.04, ubuntu-22.04, ubuntu-24.04, windows-latest]
+        python-version: ['3.9', '3.10', '3.11', '3.12', '3.13']
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '20'
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-
-      - uses: actions/cache@v3
-        if: startsWith(runner.os, 'Linux')
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - uses: actions/cache@v3
-        if: startsWith(runner.os, 'macOS')
-        with:
-          path: ~/Library/Caches/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - uses: actions/cache@v3
-        if: startsWith(runner.os, 'Windows')
-        with:
-          path: ~\AppData\Local\pip\Cache
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+          cache: 'pip'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install --upgrade setuptools
-          python -m pip install --upgrade wheel
-          python -m pip install --upgrade coverage
-          python -m pip install --upgrade mypy
-          python -m pip install --upgrade types-docutils
-          python -m pip install --upgrade tox
-          python -m pip install --upgrade tox-gh-actions
-          python -m pip install --upgrade virtualenv
+          pip install .[docs,test]
 
-      # Have to install newer version from non-apt source due to SSL library compatibility issues.
-      - name: Install Node and node-based tools (Linux)
-        if: matrix.os == 'ubuntu-20.04' || matrix.os == 'ubuntu-22.04'
+      - name: Install Node tools (Linux)
+        if: runner.os == 'Linux'
         run: |
           npm install -g markdownlint-cli
           npm install -g write-good
 
       - name: Mypy
         run: |
-          mypy --ignore-missing-imports --strict src/
+          mypy --ignore-missing-imports --strict src/statick_tool/
 
       - name: Tox
         run: |
           python -m tox
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v5
         with:
           fail_ci_if_error: false
 
       - name: Statick Documentation
-        if: matrix.os == 'ubuntu-20.04' || matrix.os == 'ubuntu-22.04'
+        if: runner.os == 'Linux'
         uses: sscpac/statick-action@v0.9.2
         with:
           profile: documentation.yaml
           timings: true
 
       - name: Self check
-        if: matrix.os == 'ubuntu-20.04' || matrix.os == 'ubuntu-22.04'
+        if: runner.os == 'Linux'
         uses: sscpac/statick-action@v0.9.2
         with:
           profile: self_check.yaml
