@@ -20,6 +20,7 @@ Custom exceptions can be applied the same way they are with
 
 - [Statick Markdown Plugins](#statick-markdown-plugins)
   - [Table of Contents](#table-of-contents)
+  - [Deprecated](#deprecated)
   - [Installation](#installation)
   - [Usage](#usage)
     - [Dependency Versions](#dependency-versions)
@@ -31,6 +32,11 @@ Custom exceptions can be applied the same way they are with
   - [Contributing](#contributing)
     - [Mypy](#mypy)
     - [Formatting](#formatting)
+
+## Deprecated
+
+This set of plugins was merged into the main [Statick] repository and Python package.
+All future development will happen in that repository.
 
 ## Installation
 
@@ -166,3 +172,4 @@ black src tests
 [rstcheck]: https://github.com/myint/rstcheck
 [rst-lint]: https://github.com/twolfson/restructuredtext-lint
 [write-good]: https://github.com/btford/write-good
+[Statick]: https://github.com/sscpac/statick

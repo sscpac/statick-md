@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
+## v0.4.0 - 2025-02-07
+
+This set of plugins was merged into the main [Statick] repository and Python package.
+All future development will happen in that repository.
+
+### Updated
+
+- The Statick dependency was pinned to lower than version 0.12.
+  - This will ensure these plugins are not installed in the same space as the main `statick` package.
+    Having both packages installed would cause conflicts between plugins.
+
 ## v0.3.1 - 2025-01-20
 
 ### Added
